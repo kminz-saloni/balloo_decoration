@@ -1,0 +1,1430 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { categoryCatalog, categoryHref } from '../data/category-data';
+
+const topNavCategories = [
+	'Balloon Decoration',
+	'Anniversary Decoration',
+	'Baby Shower',
+	'Baby Welcome',
+	'Kids Special',
+	'Wedding',
+	'Festival Decor',
+	'Corporate Events',
+];
+
+const mobileDrawerCategories = [
+	'Balloon Decoration',
+	'Anniversary Decoration',
+	'Baby Shower',
+	'Baby Welcome',
+	'Kids Special',
+	'Other Decorations',
+	'Wedding',
+	'Candle Light Dinner',
+];
+
+const homeSearchIndex = categoryCatalog.flatMap((category) => [
+	{ term: category.title, slug: category.slug },
+	...category.cards.map((card) => ({ term: card.title, slug: category.slug })),
+]);
+
+const categories = [
+	{
+		title: 'Birthday Decoration',
+		image: '/Categories/Birthday.webp',
+	},
+	{
+		title: 'Kids Decoration',
+		image: '/Categories/Kids%20Special.webp',
+	},
+	{
+		title: 'Newborn Welcome',
+		image: '/Categories/Baby%20Welcome.webp',
+	},
+	{
+		title: 'Anniversary Decoration',
+		image: '/Categories/Anniversary%20Decor.webp',
+	},
+	{
+		title: 'Baby Shower',
+		image: '/Categories/Baby%20Shower.webp',
+	},
+	{
+		title: 'Wedding Decor',
+		image: '/Categories/Ceremony%20Decor.webp',
+	},
+	{
+		title: 'Bride To Be',
+		image: '/Categories/Bride%20to%20be.webp',
+	},
+	{
+		title: 'Canopy Decor',
+		image: '/Categories/Canopy%20Decor.webp',
+	},
+	{
+		title: 'Car Boot Decor',
+		image: '/Categories/Car%20Boot.webp',
+	},
+	{
+		title: 'Corporate Events',
+		image: '/Categories/Corporate%20event.webp',
+	},
+	{
+		title: 'Engagement Decor',
+		image: '/Categories/Engagement%20Decor.webp',
+	},
+	{
+		title: 'Festival Decor',
+		image: '/Categories/Festival%20Decor.webp',
+	},
+	{
+		title: 'Proposal Decor',
+		image: '/Categories/Proposal%20Decor.jpeg',
+	},
+	{
+		title: 'Retirement Decor',
+		image: '/Categories/Retirement%20Decor.webp',
+	},
+	{
+		title: 'Room Decor',
+		image: '/Categories/Room%20Decor%20New.webp',
+	},
+];
+
+// Easy-to-edit kids section data.
+// Add/remove cards by updating these arrays only.
+const kidsSpecialThemes = [
+	{ name: 'Cocomelon Theme', image: '/Categories/Kids%20Special.jpeg', slug: 'kids-cocomelon-theme' },
+	{ name: 'Baby Shark Theme', image: '/Categories/Kids%20Special.webp', slug: 'kids-baby-shark-theme' },
+	{ name: 'Boss Baby Theme', image: '/Categories/Baby%20Welcome.webp', slug: 'kids-boss-baby-theme' },
+	{ name: 'Jungle Theme', image: '/Categories/Birthday.webp', slug: 'kids-jungle-theme' },
+	{ name: 'Frozen Theme', image: '/Categories/Baby%20Shower.webp', slug: 'kids-frozen-theme' },
+	{ name: 'Mermaid Theme', image: '/Categories/Room%20Decor%20New.webp', slug: 'kids-mermaid-theme' },
+];
+
+const kidsSpecialCarouselCards = [
+	{
+		title: 'Icecream Kids Setup',
+		image: '/Categories/Kids%20Special.jpeg',
+		rating: '4.9',
+	},
+	{
+		title: 'Butterfly Theme Setup',
+		image: '/Categories/Baby%20Welcome.webp',
+		rating: '4.8',
+	},
+	{
+		title: 'Cartoon Party Setup',
+		image: '/Categories/Kids%20Special.webp',
+		rating: '4.7',
+	},
+	{
+		title: 'Animal Safari Setup',
+		image: '/Categories/Birthday.webp',
+		rating: '4.9',
+	},
+	{
+		title: 'Candyland Setup',
+		image: '/Categories/Proposal%20Decor.jpeg',
+		rating: '4.8',
+	},
+];
+
+const weddingCollectionThemes = [
+	{ name: 'Bridal Shower', image: '/Categories/Baby%20Shower.webp', slug: 'wedding-bridal-shower' },
+	{ name: 'Haldi Decor', image: '/Categories/Ceremony%20Decor.webp', slug: 'wedding-haldi-decor' },
+	{ name: 'Mehndi Decor', image: '/Categories/Festival%20Decor.webp', slug: 'wedding-mehndi-decor' },
+	{ name: 'Wedding Car', image: '/Categories/Car%20Boot.webp', slug: 'wedding-wedding-car' },
+	{ name: 'Bride Welcome', image: '/Categories/Baby%20Welcome.webp', slug: 'wedding-bride-welcome' },
+	{ name: 'First Night', image: '/Categories/Room%20Decor%20New.webp', slug: 'wedding-first-night' },
+];
+
+const weddingCollectionCarouselCards = [
+	{ title: 'Royal Haldi Setup', image: '/Categories/Ceremony%20Decor.webp', rating: '4.9' },
+	{ title: 'Elegant Mehndi Setup', image: '/Categories/Festival%20Decor.webp', rating: '4.8' },
+	{ title: 'Premium Bridal Entry', image: '/Categories/Bride%20to%20be.webp', rating: '4.8' },
+	{ title: 'Wedding Car Styling', image: '/Categories/Car%20Boot.webp', rating: '4.7' },
+	{ title: 'First Night Decor', image: '/Categories/Room%20Decor%20New.webp', rating: '4.9' },
+];
+
+const romanticDecorThemes = [
+	{ name: 'Anniversary', image: '/Categories/Anniversary%20Decor.webp', slug: 'romantic-anniversary' },
+	{ name: 'Canopy', image: '/Categories/Canopy%20Decor.webp', slug: 'romantic-canopy' },
+	{ name: 'Room Decor', image: '/Categories/Room%20Decor%20New.webp', slug: 'romantic-room-decor' },
+	{ name: 'Proposal', image: '/Categories/Proposal%20Decor.jpeg', slug: 'romantic-proposal' },
+	{ name: 'Car Boot Decor', image: '/Categories/Car%20Boot.webp', slug: 'romantic-car-boot-decor' },
+	{ name: 'Candle Light Dinner', image: '/Categories/Bride%20to%20be.webp', slug: 'romantic-candle-light-dinner' },
+];
+
+const romanticDecorCarouselCards = [
+	{ title: 'Romantic Room Setup', image: '/Categories/Room%20Decor%20New.webp', rating: '4.8' },
+	{ title: 'Anniversary Love Ring', image: '/Categories/Anniversary%20Decor.webp', rating: '4.9' },
+	{ title: 'Canopy Date Setup', image: '/Categories/Canopy%20Decor.webp', rating: '4.8' },
+	{ title: 'Proposal Spotlight', image: '/Categories/Proposal%20Decor.jpeg', rating: '4.9' },
+	{ title: 'Couple Car Surprise', image: '/Categories/Car%20Boot.webp', rating: '4.7' },
+];
+
+const corporateEventSection = {
+	title: 'Corporate Event Planner',
+	subtitle: 'Get your decoration done in just 2 hours',
+	image: '/Categories/Corporate%20event.webp',
+};
+
+const weddingCarDecorCards = [
+	{ title: 'Audi Rose Bridal Car', image: '/Categories/Car%20Boot.webp', rating: '4.9' },
+	{ title: 'Premium Wedding Car Decor', image: '/Categories/Car%20Boot.png', rating: '4.7' },
+	{ title: 'Bridal Toyota Car Decor', image: '/Categories/Car%20Boot.webp', rating: '4.8' },
+	{ title: 'White Car Wedding Setup', image: '/Categories/Car%20Boot.png', rating: '4.8' },
+];
+
+const instagramMomentsGallery = [
+	{ image: '/Categories/Birthday.webp', alt: 'Blue birthday ring setup' },
+	{ image: '/Categories/Baby%20Shower.webp', alt: 'Pastel baby shower setup' },
+	{ image: '/Categories/Anniversary%20Decor.webp', alt: 'Anniversary room decor setup' },
+	{ image: '/Categories/Kids%20Special.webp', alt: 'Kids birthday balloon setup' },
+	{ image: '/Categories/Room%20Decor%20New.webp', alt: 'Romantic room surprise decor' },
+	{ image: '/Categories/Proposal%20Decor.jpeg', alt: 'Proposal themed setup' },
+	{ image: '/Categories/Bride%20to%20be.webp', alt: 'Bride to be celebration decor' },
+	{ image: '/Categories/Canopy%20Decor.webp', alt: 'Canopy balloon arch decor' },
+	{ image: '/Categories/Ceremony%20Decor.webp', alt: 'Golden event decor setup' },
+];
+
+const reviewHighlights = [
+	{ title: '10 Lakh+ customers', subtitle: 'Across 80+ cities' },
+	{ title: 'All reviews verified', subtitle: 'From real bookings only' },
+];
+
+const customerReviews = [
+	{
+		rating: '4.9',
+		text: "I highly recommend this talented balloon decoration website for any event or celebration. You won't be disappointed!",
+		name: 'Saanvi Puri',
+		city: 'Visakhapatnam',
+		initial: 'S',
+	},
+	{
+		rating: '4.8',
+		text: 'Good and fast service. The team was very responsive and delivered quality work exactly as promised.',
+		name: 'Sunita Mehra',
+		city: 'Bhopal',
+		initial: 'S',
+	},
+	{
+		rating: '4.9',
+		text: 'Booked for our baby shower and the decor looked even better than photos. Very professional execution.',
+		name: 'Ritika Sharma',
+		city: 'Jaipur',
+		initial: 'R',
+	},
+	{
+		rating: '4.7',
+		text: 'Nice setup and timely delivery. Great value for money and easy booking experience.',
+		name: 'Arjun Verma',
+		city: 'Indore',
+		initial: 'A',
+	},
+];
+
+const faqItems = [
+	{
+		question: 'How much does balloon decoration at home cost in Jaipur?',
+		answer:
+			'Balloon decoration at home in Jaipur starts at Rs999. Basic setups with wall balloons and ribbons usually range from Rs999 to Rs1,499. Birthday setups start at Rs1,499, while premium ring and sequin designs start at Rs10,999. Prices are fixed and visible before booking.',
+	},
+	{
+		question: 'Which areas of Jaipur do you cover for balloon decoration?',
+		answer:
+			'We serve all major Jaipur areas including Vaishali Nagar, Mansarovar, Malviya Nagar, Jagatpura, C-Scheme and nearby localities.',
+	},
+	{
+		question: 'Do I need to arrange any materials for the decoration?',
+		answer:
+			'No, our team brings all balloons and setup material. You only need to provide the decoration space and basic electricity access if required.',
+	},
+	{
+		question: 'Is same-day balloon decoration booking available?',
+		answer:
+			'Yes, same-day booking is available for selected setups and slots in Jaipur. Early booking is recommended for better availability.',
+	},
+	{
+		question: 'Can I book a surprise balloon decoration at home?',
+		answer:
+			'Yes. We can coordinate silent entry timings and quick setup windows so your surprise celebration remains private and smooth.',
+	},
+	{
+		question: 'How do I book decoration on balloondecorationjaipur.com?',
+		answer:
+			'Choose a category, select your preferred setup, then use Book Now. Our team confirms timing, location and requirements on call or WhatsApp.',
+	},
+];
+
+const footerImportantLinks = ['Terms & Conditions', 'Return & Refund', 'About Us', 'Disclaimer'];
+const footerTopCategories = [
+	'Birthday',
+	'Anniversary',
+	'Baby Shower',
+	'Welcome Baby',
+	'Kids Theme',
+	'Balloon Decoration',
+	'First Night Decorations',
+];
+const footerTopLocations = ['Jaipur', 'Vaishali Nagar', 'Mansarovar', 'Malviya Nagar'];
+const footerInfoLinks = ['Contact Us', 'Privacy Policy', 'Sitemap'];
+---
+
+<Layout title="Balloon Decoration Jaipur | Book Now">
+	<main class="relative min-h-screen overflow-x-clip pb-28 lg:pb-10">
+		<div class="border-b border-[#dee8fb] bg-white/90 backdrop-blur">
+			<div class="mx-auto w-full max-w-[1320px] px-4 sm:px-6 lg:px-8">
+				<header class="page-reveal py-4 lg:py-5">
+					<div class="flex items-center gap-2 sm:gap-4">
+						<button
+							type="button"
+							aria-label="Open navigation menu"
+							id="mobile-menu-button"
+							class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[#dce8ff] bg-[#eff5ff] text-[#5e46cc] transition hover:bg-[#e7f0ff] lg:hidden"
+						>
+							<svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2">
+								<line x1="4" y1="7" x2="20" y2="7"></line>
+								<line x1="4" y1="12" x2="20" y2="12"></line>
+								<line x1="4" y1="17" x2="20" y2="17"></line>
+							</svg>
+						</button>
+
+						<img
+							src="/logo-placeholder.svg"
+							alt="Logo placeholder"
+							class="h-10 w-[128px] rounded-xl border border-[#d7e6ff] bg-white px-2 object-contain lg:h-11 lg:w-[145px]"
+						/>
+
+						<div
+							class="hidden items-center gap-2 rounded-full border border-[#d7caff] bg-[#f7f3ff] px-4 py-2.5 text-sm font-semibold text-[#5f3fc2] shadow-sm lg:flex"
+						>
+							<svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2">
+								<path d="M12 21s7-4.35 7-11a7 7 0 1 0-14 0c0 6.65 7 11 7 11z"></path>
+								<circle cx="12" cy="10" r="2.3"></circle>
+							</svg>
+							<span>Jaipur</span>
+						</div>
+
+						<div class="hidden flex-1 lg:block">
+							<div
+								class="flex items-center overflow-hidden rounded-2xl border border-[#d9e3f2] bg-[#f5f8ff] shadow-inner shadow-white/60"
+							>
+								<div class="px-4 text-[#7f8aa3]">
+									<svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2">
+										<circle cx="11" cy="11" r="7"></circle>
+										<line x1="16.65" y1="16.65" x2="21" y2="21"></line>
+									</svg>
+								</div>
+								<input
+									id="home-search-input-desktop"
+									type="text"
+									placeholder='Search "Birthday decoration"...'
+									class="h-14 w-full border-none bg-transparent pr-2 text-[17px] text-[#2f3550] placeholder:text-[#7f8aa3] focus:outline-none"
+								/>
+								<button
+									type="button"
+									id="home-search-button-desktop"
+									data-home-search-trigger
+									aria-label="Search"
+									class="flex h-14 min-w-[140px] items-center justify-center gap-2 bg-gradient-to-b from-[#5b4fda] to-[#7a4def] px-4 text-lg font-semibold text-white"
+								>
+									<svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2">
+										<circle cx="11" cy="11" r="7"></circle>
+										<line x1="16.65" y1="16.65" x2="21" y2="21"></line>
+									</svg>
+									<span>Search</span>
+								</button>
+							</div>
+						</div>
+
+						<div
+							class="inline-flex items-center gap-1 rounded-full border border-[#d7caff] bg-[#f7f3ff] px-2.5 py-2 text-sm font-semibold leading-none text-[#5f3fc2] lg:hidden"
+						>
+							<svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2">
+								<path d="M12 21s7-4.35 7-11a7 7 0 1 0-14 0c0 6.65 7 11 7 11z"></path>
+								<circle cx="12" cy="10" r="2.3"></circle>
+							</svg>
+							<span>Jaipur</span>
+						</div>
+
+						<button
+							type="button"
+							class="ml-auto rounded-full bg-gradient-to-r from-[#4f46e5] to-[#7c3aed] px-3 py-2.5 text-sm font-semibold text-white shadow-[0_12px_24px_-14px_rgba(90,49,180,0.75)] transition hover:translate-y-[-1px] hover:shadow-[0_14px_24px_-14px_rgba(90,49,180,0.95)] sm:px-6"
+						>
+							Book Now
+						</button>
+					</div>
+
+					<div
+						class="mt-3 flex items-center overflow-hidden rounded-2xl border border-[#d9e3f2] bg-[#f5f8ff] shadow-inner shadow-white/60 lg:hidden"
+					>
+						<div class="px-4 text-[#7f8aa3]">
+							<svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2">
+								<circle cx="11" cy="11" r="7"></circle>
+								<line x1="16.65" y1="16.65" x2="21" y2="21"></line>
+							</svg>
+						</div>
+						<input
+							id="home-search-input-mobile"
+							type="text"
+							placeholder='Search "Birthday decoration"...'
+							class="h-14 w-full border-none bg-transparent pr-2 text-[17px] text-[#2f3550] placeholder:text-[#7f8aa3] focus:outline-none"
+						/>
+						<button
+							type="button"
+							id="home-search-button-mobile"
+							data-home-search-trigger
+							aria-label="Search"
+							class="flex h-14 w-14 items-center justify-center bg-gradient-to-b from-[#5b4fda] to-[#7a4def] text-white"
+						>
+							<svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2">
+								<circle cx="11" cy="11" r="7"></circle>
+								<line x1="16.65" y1="16.65" x2="21" y2="21"></line>
+							</svg>
+						</button>
+					</div>
+
+				</header>
+			</div>
+		</div>
+
+		<div class="hidden border-b border-[#d9e3f2] bg-white/92 backdrop-blur lg:block">
+			<div class="mx-auto w-full max-w-[1320px] px-4 sm:px-6 lg:px-8">
+				<nav
+					class="page-reveal category-scroll flex flex-nowrap items-center gap-2 overflow-x-auto py-3 whitespace-nowrap lg:gap-3"
+					style="animation-delay: 50ms;"
+				>
+						{
+							topNavCategories.map((category) => (
+								<a
+									href={categoryHref(category)}
+									class="shrink-0 rounded-full border border-[#d9e3f2] bg-[#f5f8ff] px-4 py-2 text-sm font-semibold text-[#1f2a44] transition hover:border-[#c8d5ee] hover:bg-[#edf3ff] lg:text-base"
+								>
+									{category}
+								</a>
+						))
+					}
+				</nav>
+			</div>
+		</div>
+
+		<div class="mx-auto w-full max-w-[1320px] px-4 pt-3 sm:px-6 lg:px-8 lg:pt-4">
+			<section
+				class="page-reveal rounded-[28px] border border-white/70 bg-white/90 p-2 shadow-[0_16px_38px_-26px_rgba(67,61,128,0.35)] backdrop-blur sm:p-3"
+				style="animation-delay: 80ms;"
+			>
+				<img
+					src="/Hero%20Image.png"
+					alt="India's No.1 decoration service banner"
+					class="h-auto w-full rounded-[22px] object-cover"
+				/>
+			</section>
+
+			<section class="mt-9 pb-2">
+				<div class="page-reveal relative text-center" style="animation-delay: 140ms;">
+					<h2 class="text-3xl font-extrabold leading-tight tracking-tight text-[#1f2a44] sm:text-4xl">
+						India&apos;s No.1 Decor
+					</h2>
+					<p class="mt-2 text-lg font-medium text-[#5f6b86] sm:text-xl">
+						Trusted Decorators for all events
+					</p>
+					<a
+						href="/explore"
+						class="absolute top-0 right-0 hidden rounded-full border border-[#d9e3f2] bg-white px-3 py-1.5 text-xs font-semibold text-[#5a4fd8] shadow-sm transition hover:border-[#c8d5ee] hover:bg-[#f7f9ff] lg:inline-flex"
+					>
+						View all
+					</a>
+				</div>
+
+					<div class="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-3 lg:grid-cols-5 lg:gap-4 xl:grid-cols-6">
+						{
+							categories.slice(0, 6).map((category, index) => (
+								<a
+									href={categoryHref(category.title)}
+									class="stagger-item overflow-hidden rounded-2xl border border-[#d9e3f2] bg-white p-2.5 shadow-[0_12px_24px_-20px_rgba(54,67,122,0.36)]"
+									style={`animation-delay: ${180 + index * 55}ms;`}
+								>
+									<img
+										src={category.image}
+									alt={category.title}
+									class="aspect-square w-full rounded-xl object-cover"
+									loading="lazy"
+								/>
+									<h3 class="mt-2 text-center text-[0.92rem] font-semibold leading-tight text-[#1f2a44] sm:text-[0.98rem]">
+										{category.title}
+									</h3>
+								</a>
+							))
+						}
+					</div>
+			</section>
+
+			<section class="mt-12 pb-4">
+				<div class="page-reveal text-center" style="animation-delay: 160ms;">
+					<div class="mx-auto mb-3 h-[3px] w-full max-w-[520px] rounded-full bg-gradient-to-r from-[#f6a4bc] via-[#e2cef9] to-[#f6a4bc]"></div>
+					<h2 class="text-3xl font-extrabold leading-tight tracking-tight text-[#1f2a44] sm:text-4xl">Kids Special</h2>
+					<p class="mt-2 text-lg font-medium text-[#5f6b86] sm:text-xl">Fun-Filled Themes for Every Celebration!</p>
+				</div>
+
+					<div class="mt-6 grid grid-cols-3 gap-3 sm:gap-4 lg:grid-cols-6 lg:gap-4">
+						{
+							kidsSpecialThemes.map((theme, index) => (
+								<a
+									href={`/sub-category/${theme.slug}`}
+									class="stagger-item overflow-hidden rounded-2xl border border-[#d9e3f2] bg-white p-2 sm:p-2.5 shadow-[0_12px_22px_-20px_rgba(54,67,122,0.32)]"
+									style={`animation-delay: ${190 + index * 55}ms;`}
+								>
+								<img
+									src={theme.image}
+									alt={theme.name}
+									class="aspect-square w-full rounded-xl bg-[#fff9ea] object-cover"
+									loading="lazy"
+								/>
+									<h3 class="mt-2 text-center text-[0.92rem] font-semibold leading-tight text-[#1f2a44] sm:text-[1rem] lg:text-[0.95rem]">
+										{theme.name}
+									</h3>
+								</a>
+							))
+						}
+					</div>
+
+				<div class="page-reveal mt-9" style="animation-delay: 230ms;">
+					<div class="relative">
+						<button
+							id="kids-carousel-prev"
+							type="button"
+							aria-label="Previous kids setups"
+							class="absolute top-[36%] left-1 z-20 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-[#d9e3f2] bg-white/95 text-[#4f5673] shadow-[0_12px_24px_-16px_rgba(48,61,113,0.75)] lg:flex"
+						>
+							<svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2">
+								<path d="m15 18-6-6 6-6"></path>
+							</svg>
+						</button>
+
+						<div id="kids-carousel-track" class="hide-scrollbar flex snap-x snap-mandatory gap-3 overflow-x-auto px-1 pb-2 pt-1 scroll-smooth">
+							{
+								kidsSpecialCarouselCards.map((card) => (
+									<article
+										data-carousel-slide
+										class="min-w-[70%] snap-start overflow-hidden rounded-xl border border-[#d9e3f2] bg-white shadow-[0_14px_24px_-22px_rgba(54,67,122,0.36)] sm:min-w-[40%] lg:min-w-[24%]"
+									>
+										<img src={card.image} alt={card.title} class="h-36 w-full object-cover sm:h-40 lg:h-36" loading="lazy" />
+										<div class="p-3">
+											<p class="text-xs text-[#6f7b96]">At your location</p>
+											<h3 class="mt-1 text-base font-semibold leading-tight text-[#1f2a44]">{card.title}</h3>
+											<div class="mt-2 flex items-center gap-1.5 text-[#f2bf2f]">
+												<span class="text-xs">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
+												<span class="text-xs font-medium text-[#5f6b86]">{card.rating}</span>
+											</div>
+											<button
+												type="button"
+												class="mt-2.5 w-full rounded-lg bg-gradient-to-r from-[#5b4fda] to-[#7a4def] px-4 py-2 text-xs font-bold text-white"
+											>
+												BOOK NOW
+											</button>
+										</div>
+									</article>
+								))
+							}
+						</div>
+
+						<button
+							id="kids-carousel-next"
+							type="button"
+							aria-label="Next kids setups"
+							class="absolute top-[36%] right-1 z-20 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-[#d9e3f2] bg-white/95 text-[#4f5673] shadow-[0_12px_24px_-16px_rgba(48,61,113,0.75)] lg:flex"
+						>
+							<svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2">
+								<path d="m9 18 6-6-6-6"></path>
+							</svg>
+						</button>
+					</div>
+				</div>
+			</section>
+
+			<section class="mt-12 pb-4">
+				<div class="page-reveal text-center" style="animation-delay: 180ms;">
+					<div class="mx-auto mb-3 h-[3px] w-full max-w-[520px] rounded-full bg-gradient-to-r from-[#f6a4bc] via-[#e2cef9] to-[#f6a4bc]"></div>
+					<h2 class="text-3xl font-extrabold leading-tight tracking-tight text-[#1f2a44] sm:text-4xl">The Wedding Collection</h2>
+					<p class="mt-2 text-lg font-medium text-[#5f6b86] sm:text-xl">From Haldi to Honeymoon</p>
+				</div>
+
+					<div class="mt-6 grid grid-cols-3 gap-3 sm:gap-4 lg:grid-cols-6 lg:gap-4">
+						{
+							weddingCollectionThemes.map((theme, index) => (
+								<a
+									href={`/sub-category/${theme.slug}`}
+									class="stagger-item overflow-hidden rounded-2xl border border-[#d9e3f2] bg-white p-2 sm:p-2.5 shadow-[0_12px_22px_-20px_rgba(54,67,122,0.32)]"
+									style={`animation-delay: ${210 + index * 55}ms;`}
+								>
+								<img
+									src={theme.image}
+									alt={theme.name}
+									class="aspect-square w-full rounded-xl bg-[#fff9ea] object-cover"
+									loading="lazy"
+								/>
+									<h3 class="mt-2 text-center text-[0.92rem] font-semibold leading-tight text-[#1f2a44] sm:text-[1rem] lg:text-[0.95rem]">
+										{theme.name}
+									</h3>
+								</a>
+							))
+						}
+					</div>
+
+				<div class="page-reveal mt-9" style="animation-delay: 250ms;">
+					<div class="relative">
+						<button
+							id="wedding-carousel-prev"
+							type="button"
+							aria-label="Previous wedding setups"
+							class="absolute top-[36%] left-1 z-20 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-[#d9e3f2] bg-white/95 text-[#4f5673] shadow-[0_12px_24px_-16px_rgba(48,61,113,0.75)] lg:flex"
+						>
+							<svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2">
+								<path d="m15 18-6-6 6-6"></path>
+							</svg>
+						</button>
+
+						<div id="wedding-carousel-track" class="hide-scrollbar flex snap-x snap-mandatory gap-3 overflow-x-auto px-1 pb-2 pt-1 scroll-smooth">
+							{
+								weddingCollectionCarouselCards.map((card) => (
+									<article
+										data-carousel-slide
+										class="min-w-[70%] snap-start overflow-hidden rounded-xl border border-[#d9e3f2] bg-white shadow-[0_14px_24px_-22px_rgba(54,67,122,0.36)] sm:min-w-[40%] lg:min-w-[24%]"
+									>
+										<img src={card.image} alt={card.title} class="h-36 w-full object-cover sm:h-40 lg:h-36" loading="lazy" />
+										<div class="p-3">
+											<p class="text-xs text-[#6f7b96]">At your location</p>
+											<h3 class="mt-1 text-base font-semibold leading-tight text-[#1f2a44]">{card.title}</h3>
+											<div class="mt-2 flex items-center gap-1.5 text-[#f2bf2f]">
+												<span class="text-xs">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
+												<span class="text-xs font-medium text-[#5f6b86]">{card.rating}</span>
+											</div>
+											<button
+												type="button"
+												class="mt-2.5 w-full rounded-lg bg-gradient-to-r from-[#5b4fda] to-[#7a4def] px-4 py-2 text-xs font-bold text-white"
+											>
+												BOOK NOW
+											</button>
+										</div>
+									</article>
+								))
+							}
+						</div>
+
+						<button
+							id="wedding-carousel-next"
+							type="button"
+							aria-label="Next wedding setups"
+							class="absolute top-[36%] right-1 z-20 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-[#d9e3f2] bg-white/95 text-[#4f5673] shadow-[0_12px_24px_-16px_rgba(48,61,113,0.75)] lg:flex"
+						>
+							<svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2">
+								<path d="m9 18 6-6-6-6"></path>
+							</svg>
+						</button>
+					</div>
+				</div>
+			</section>
+
+			<section class="mt-12 pb-4">
+				<div class="page-reveal text-center" style="animation-delay: 190ms;">
+					<div class="mx-auto mb-3 h-[3px] w-full max-w-[520px] rounded-full bg-gradient-to-r from-[#f6a4bc] via-[#e2cef9] to-[#f6a4bc]"></div>
+					<h2 class="text-3xl font-extrabold leading-tight tracking-tight text-[#1f2a44] sm:text-4xl">Romantic Decor</h2>
+					<p class="mt-2 text-lg font-medium text-[#5f6b86] sm:text-xl">Decoration For Couple Celebration</p>
+				</div>
+
+					<div class="mt-6 grid grid-cols-3 gap-3 sm:gap-4 lg:grid-cols-6 lg:gap-4">
+						{
+							romanticDecorThemes.map((theme, index) => (
+								<a
+									href={`/sub-category/${theme.slug}`}
+									class="stagger-item overflow-hidden rounded-2xl border border-[#d9e3f2] bg-white p-2 sm:p-2.5 shadow-[0_12px_22px_-20px_rgba(54,67,122,0.32)]"
+									style={`animation-delay: ${220 + index * 55}ms;`}
+								>
+								<img
+									src={theme.image}
+									alt={theme.name}
+									class="aspect-square w-full rounded-xl bg-[#fff9ea] object-cover"
+									loading="lazy"
+								/>
+									<h3 class="mt-2 text-center text-[0.92rem] font-semibold leading-tight text-[#1f2a44] sm:text-[1rem] lg:text-[0.95rem]">
+										{theme.name}
+									</h3>
+								</a>
+							))
+						}
+					</div>
+
+				<div class="page-reveal mt-9" style="animation-delay: 260ms;">
+					<div class="relative">
+						<button
+							id="romantic-carousel-prev"
+							type="button"
+							aria-label="Previous romantic setups"
+							class="absolute top-[36%] left-1 z-20 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-[#d9e3f2] bg-white/95 text-[#4f5673] shadow-[0_12px_24px_-16px_rgba(48,61,113,0.75)] lg:flex"
+						>
+							<svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2">
+								<path d="m15 18-6-6 6-6"></path>
+							</svg>
+						</button>
+
+						<div id="romantic-carousel-track" class="hide-scrollbar flex snap-x snap-mandatory gap-3 overflow-x-auto px-1 pb-2 pt-1 scroll-smooth">
+							{
+								romanticDecorCarouselCards.map((card) => (
+									<article
+										data-carousel-slide
+										class="min-w-[70%] snap-start overflow-hidden rounded-xl border border-[#d9e3f2] bg-white shadow-[0_14px_24px_-22px_rgba(54,67,122,0.36)] sm:min-w-[40%] lg:min-w-[24%]"
+									>
+										<img src={card.image} alt={card.title} class="h-36 w-full object-cover sm:h-40 lg:h-36" loading="lazy" />
+										<div class="p-3">
+											<p class="text-xs text-[#6f7b96]">At your location</p>
+											<h3 class="mt-1 text-base font-semibold leading-tight text-[#1f2a44]">{card.title}</h3>
+											<div class="mt-2 flex items-center gap-1.5 text-[#f2bf2f]">
+												<span class="text-xs">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
+												<span class="text-xs font-medium text-[#5f6b86]">{card.rating}</span>
+											</div>
+											<button
+												type="button"
+												class="mt-2.5 w-full rounded-lg bg-gradient-to-r from-[#5b4fda] to-[#7a4def] px-4 py-2 text-xs font-bold text-white"
+											>
+												BOOK NOW
+											</button>
+										</div>
+									</article>
+								))
+							}
+						</div>
+
+						<button
+							id="romantic-carousel-next"
+							type="button"
+							aria-label="Next romantic setups"
+							class="absolute top-[36%] right-1 z-20 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-[#d9e3f2] bg-white/95 text-[#4f5673] shadow-[0_12px_24px_-16px_rgba(48,61,113,0.75)] lg:flex"
+						>
+							<svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2">
+								<path d="m9 18 6-6-6-6"></path>
+							</svg>
+						</button>
+					</div>
+				</div>
+				</section>
+
+				<section class="mt-12 pb-4">
+					<div
+						class="page-reveal overflow-hidden rounded-[24px] border border-[#d9e3f2] bg-white shadow-[0_16px_30px_-24px_rgba(54,67,122,0.42)]"
+						style="animation-delay: 275ms;"
+					>
+						<div class="grid items-center gap-5 bg-gradient-to-r from-[#f7f9ff] to-[#edf3ff] p-5 sm:p-7 lg:grid-cols-[1.1fr_1fr]">
+							<div>
+								<p class="text-2xl font-extrabold tracking-tight text-[#1f2a44] sm:text-4xl">{corporateEventSection.title}</p>
+								<p class="mt-2 text-base font-medium text-[#4f5e7c] sm:text-xl">{corporateEventSection.subtitle}</p>
+								<button
+									type="button"
+									class="mt-4 rounded-full bg-gradient-to-r from-[#3660be] to-[#4d73ca] px-5 py-2 text-sm font-bold text-white"
+								>
+									ORDER NOW
+								</button>
+							</div>
+							<img
+								src={corporateEventSection.image}
+								alt="Corporate event decoration setup"
+								class="h-44 w-full rounded-2xl object-cover sm:h-56 lg:h-64"
+								loading="lazy"
+							/>
+						</div>
+					</div>
+
+					<div class="page-reveal mt-6" style="animation-delay: 290ms;">
+						<div class="flex items-center justify-between gap-3">
+							<h2 class="text-3xl font-extrabold tracking-tight text-[#1f2a44] sm:text-4xl">Car Decoration for Wedding</h2>
+							<a href={categoryHref('Car Decoration')} class="text-lg font-semibold text-[#e84287] underline-offset-4 hover:underline sm:text-2xl">View All</a>
+						</div>
+
+						<div class="mt-4 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
+							{
+								weddingCarDecorCards.map((card) => (
+									<article class="overflow-hidden rounded-2xl border border-[#d9e3f2] bg-white shadow-[0_14px_24px_-22px_rgba(54,67,122,0.36)]">
+										<img src={card.image} alt={card.title} class="h-36 w-full object-cover sm:h-44 lg:h-48" loading="lazy" />
+										<div class="p-3">
+											<p class="text-xs text-[#6f7b96]">At your location</p>
+											<h3 class="mt-1 text-base font-semibold leading-tight text-[#1f2a44] sm:text-lg">{card.title}</h3>
+											<div class="mt-2 flex items-center gap-1.5 text-[#f2bf2f]">
+												<span class="text-xs">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
+												<span class="text-xs font-medium text-[#5f6b86]">{card.rating}</span>
+											</div>
+										</div>
+									</article>
+								))
+							}
+						</div>
+					</div>
+				</section>
+
+				<section class="mt-14 pb-8">
+					<div class="page-reveal mx-auto max-w-[960px]" style="animation-delay: 300ms;">
+						<div class="text-center">
+						<h2 class="font-serif text-[1.85rem] font-bold leading-tight tracking-tight text-[#1f2a44] sm:text-[2.4rem] lg:text-[3rem]">
+							<span class="block">Turning Moments into</span>
+							<span class="block text-[#df3a86]">Everlasting Moments</span>
+						</h2>
+					</div>
+
+					<div class="mt-7 grid grid-cols-3 gap-2.5 sm:gap-3 lg:gap-4">
+						{
+							instagramMomentsGallery.map((item) => (
+								<div class="overflow-hidden rounded-2xl border border-[#d9e3f2] bg-white shadow-[0_10px_18px_-18px_rgba(54,67,122,0.45)]">
+									<img src={item.image} alt={item.alt} class="aspect-[0.95] w-full object-cover" loading="lazy" />
+								</div>
+							))
+						}
+					</div>
+
+					<div class="mt-7 flex justify-center">
+						<a
+							href="#"
+							class="inline-flex items-center gap-3 rounded-2xl bg-gradient-to-r from-[#8a4cf6] to-[#f23f6f] px-7 py-3 text-[1.05rem] font-semibold text-white shadow-[0_14px_28px_-20px_rgba(113,53,190,0.85)] transition hover:translate-y-[-1px]"
+						>
+							<svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2">
+								<rect x="4" y="4" width="16" height="16" rx="4"></rect>
+								<circle cx="12" cy="12" r="3.2"></circle>
+								<circle cx="17" cy="7" r="0.8" fill="currentColor"></circle>
+							</svg>
+							<span>Follow us on Instagram</span>
+						</a>
+					</div>
+				</div>
+			</section>
+
+			<section class="mt-2 pb-10">
+				<div class="page-reveal mx-auto max-w-[1000px]" style="animation-delay: 320ms;">
+					<div class="overflow-hidden rounded-[24px] bg-gradient-to-br from-[#6b3fe7] via-[#7a4def] to-[#5b2ec7] p-3.5 text-white shadow-[0_24px_40px_-28px_rgba(64,37,138,0.8)] sm:rounded-[28px] sm:p-7">
+						<p class="text-xs font-bold tracking-[0.12em] text-white/85 sm:text-sm">&#9733; REVIEWS</p>
+						<h2 class="mt-2 max-w-[560px] text-[1.45rem] font-extrabold leading-tight sm:mt-3 sm:text-5xl">Loved by 10L+ families across India</h2>
+
+						<div class="mt-3.5 flex items-end gap-2.5 sm:mt-5 sm:gap-3">
+							<p class="text-4xl leading-none font-extrabold sm:text-8xl">4.7</p>
+							<div class="pb-1.5 sm:pb-2">
+								<p class="text-base text-[#ffd451] sm:text-2xl">&#9733; &#9733; &#9733; &#9733; &#9733;</p>
+								<p class="text-base font-semibold text-white/85 sm:text-2xl">out of 5</p>
+							</div>
+						</div>
+
+						<p class="mt-3 text-sm text-white/85 sm:mt-5 sm:text-2xl">Based on 10+ verified customer reviews</p>
+
+						<div class="mt-3.5 space-y-2 sm:mt-5 sm:space-y-3">
+							{
+								reviewHighlights.map((item, index) => (
+									<div class="flex items-center gap-2 rounded-2xl border border-white/20 bg-white/10 px-2.5 py-2 sm:gap-3 sm:px-3 sm:py-3.5">
+										<span class="flex h-9 w-9 items-center justify-center rounded-xl bg-white/15 text-white/95 sm:h-10 sm:w-10">
+											{
+												index === 0 ? (
+													<svg viewBox="0 0 24 24" class="h-5 w-5 sm:h-6 sm:w-6" fill="none" stroke="currentColor" stroke-width="2">
+														<path d="M16 11a4 4 0 1 0-8 0"></path>
+														<path d="M5 20v-1a5 5 0 0 1 5-5h4a5 5 0 0 1 5 5v1"></path>
+														<circle cx="8" cy="8" r="2"></circle>
+														<circle cx="16" cy="8" r="2"></circle>
+													</svg>
+												) : (
+													<svg viewBox="0 0 24 24" class="h-5 w-5 sm:h-6 sm:w-6" fill="none" stroke="currentColor" stroke-width="2">
+														<path d="M12 22s8-4 8-10V7l-8-3-8 3v5c0 6 8 10 8 10z"></path>
+														<path d="m9.5 12 2 2 3-3"></path>
+													</svg>
+												)
+											}
+										</span>
+										<span>
+											<span class="block text-[1.3rem] leading-tight font-bold sm:text-2xl">{item.title}</span>
+											<span class="block text-[1rem] text-white/75 sm:text-xl">{item.subtitle}</span>
+										</span>
+									</div>
+								))
+							}
+						</div>
+					</div>
+
+					<div class="mt-5 sm:mt-6">
+						<div class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+							<div>
+								<h3 class="text-[1.9rem] font-extrabold leading-tight text-[#1f2a44] sm:text-5xl">What customers say</h3>
+								<p class="mt-1 text-base text-[#5f6b86] sm:text-3xl">Real stories from real events</p>
+							</div>
+							<div class="flex items-center gap-2">
+								<button
+									id="review-carousel-prev"
+									type="button"
+									aria-label="Previous reviews"
+									class="flex h-11 w-11 items-center justify-center rounded-full border border-[#d9e3f2] bg-white text-[#5f6b86] shadow-sm"
+								>
+									<svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2">
+										<path d="m15 18-6-6 6-6"></path>
+									</svg>
+								</button>
+								<button
+									id="review-carousel-next"
+									type="button"
+									aria-label="Next reviews"
+									class="flex h-11 w-11 items-center justify-center rounded-full border border-[#d9e3f2] bg-white text-[#5f6b86] shadow-sm"
+								>
+									<svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2">
+										<path d="m9 18 6-6-6-6"></path>
+									</svg>
+								</button>
+							</div>
+						</div>
+
+						<div id="review-carousel-track" class="hide-scrollbar mt-3 flex snap-x snap-mandatory gap-3 overflow-x-auto pb-2 scroll-smooth">
+							{
+								customerReviews.map((review) => (
+									<article
+										data-carousel-slide
+										class="min-w-[88%] snap-start rounded-2xl border border-[#d9e3f2] bg-white p-4 shadow-[0_16px_28px_-24px_rgba(53,69,112,0.6)] sm:min-w-[60%] lg:min-w-[48%]"
+									>
+										<div class="flex items-center justify-between">
+											<div class="flex items-center gap-2 text-[#e8b12f]">
+												<span class="text-sm">&#9733; &#9733; &#9733; &#9733; &#9733;</span>
+												<span class="text-sm font-semibold text-[#cf7f14]">{review.rating}</span>
+											</div>
+											<span class="rounded-full border border-[#9be0c1] bg-[#eafff3] px-3 py-1 text-xs font-bold tracking-wide text-[#07935d]">
+												VERIFIED
+											</span>
+										</div>
+
+										<p class="mt-4 text-base leading-relaxed text-[#32405f]">{review.text}</p>
+
+										<div class="mt-5 flex items-center gap-3 border-t border-dashed border-[#d9e3f2] pt-4">
+											<span class="flex h-10 w-10 items-center justify-center rounded-xl bg-[#ff990f] text-lg font-bold text-white">
+												{review.initial}
+											</span>
+											<span>
+												<span class="block text-lg font-semibold text-[#1f2a44]">{review.name}</span>
+												<span class="block text-sm text-[#5f6b86]">{review.city}</span>
+											</span>
+										</div>
+									</article>
+								))
+							}
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="mt-4 pb-5">
+				<div class="page-reveal mx-auto max-w-[1000px]" style="animation-delay: 340ms;">
+					<div class="text-center">
+						<p class="text-xs font-bold tracking-[0.18em] text-[#6b3fe7] sm:text-sm">FAQ</p>
+						<h2 class="mt-2 text-2xl font-extrabold tracking-tight text-[#1f2a44] sm:text-4xl">Frequently Asked Questions</h2>
+						<p class="mt-2 text-sm text-[#7b859f] sm:text-xl">Everything you need to know before booking</p>
+					</div>
+
+					<div class="mt-6 space-y-3.5 sm:mt-7 sm:space-y-4">
+						{
+							faqItems.map((item, index) => (
+								<article
+									data-faq-item
+									data-open={index === 0 ? 'true' : 'false'}
+									class={`rounded-3xl border p-4 transition-all sm:p-6 ${
+										index === 0 ? 'border-[#cbb7fb] bg-[#f3edff]' : 'border-[#e6ebf7] bg-white'
+									}`}
+								>
+									<button type="button" data-faq-toggle class="flex w-full items-start justify-between gap-3 text-left">
+										<span class="text-lg font-semibold leading-tight text-[#1f2a44] sm:text-3xl">{item.question}</span>
+										<span
+											data-faq-icon-wrap
+											class={`mt-1 flex h-9 w-9 shrink-0 items-center justify-center rounded-full sm:h-11 sm:w-11 ${
+												index === 0 ? 'bg-[#6b3fe7] text-white' : 'bg-[#eff2f7] text-[#75819b]'
+											}`}
+										>
+											<svg
+												data-faq-plus
+												viewBox="0 0 24 24"
+												class={`h-5 w-5 ${index === 0 ? 'hidden' : 'block'}`}
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2"
+											>
+												<path d="M12 5v14"></path>
+												<path d="M5 12h14"></path>
+											</svg>
+											<svg
+												data-faq-minus
+												viewBox="0 0 24 24"
+												class={`h-5 w-5 ${index === 0 ? 'block' : 'hidden'}`}
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2"
+											>
+												<path d="M5 12h14"></path>
+											</svg>
+										</span>
+									</button>
+									<div data-faq-content class={`mt-4 pr-2 text-base leading-relaxed text-[#52607d] sm:text-xl ${index === 0 ? 'block' : 'hidden'}`}>
+										{item.answer}
+									</div>
+								</article>
+							))
+						}
+					</div>
+				</div>
+			</section>
+
+			<section class="pb-10 lg:pb-12">
+				<div class="page-reveal mx-auto max-w-[1080px]" style="animation-delay: 360ms;">
+					<footer class="border-t border-[#dbe4f6] bg-[#f8fbff] p-5 sm:p-7 lg:p-10">
+						<div class="grid gap-8 lg:grid-cols-[1.1fr_1fr]">
+							<div>
+								<img
+									src="/logo-placeholder.svg"
+									alt="Logo placeholder"
+									class="h-11 w-[150px] rounded-xl border border-[#d7e6ff] bg-white px-2 object-contain"
+								/>
+								<p class="mt-5 max-w-[560px] text-lg leading-relaxed text-[#4f5e7c] sm:text-[1.32rem]">
+									India&apos;s trusted platform for balloon decoration, birthday setups, and event styling delivered to your door in Jaipur.
+								</p>
+
+								<div class="mt-5 space-y-3">
+									<a href="tel:+917450960060" class="flex items-center gap-3 text-[#2b3858]">
+										<span class="flex h-11 w-11 items-center justify-center rounded-xl bg-[#f1f4fb] text-[#6b748c]">
+											<svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2">
+												<path d="M22 16.9v3a2.1 2.1 0 0 1-2.3 2.1A19.2 19.2 0 0 1 3 5.3 2.1 2.1 0 0 1 5.1 3h3a2 2 0 0 1 2 1.7c.1 1 .3 1.9.7 2.8a2 2 0 0 1-.4 2.1l-1.2 1.2a16 16 0 0 0 4.9 4.9l1.2-1.2a2 2 0 0 1 2.1-.4c.9.4 1.8.6 2.8.7A2 2 0 0 1 22 16.9z"></path>
+											</svg>
+										</span>
+										<span class="text-[1.15rem] font-medium sm:text-[1.35rem]">+91 7450960060</span>
+									</a>
+
+									<a href="mailto:info@7eventzz.com" class="flex items-center gap-3 text-[#2b3858]">
+										<span class="flex h-11 w-11 items-center justify-center rounded-xl bg-[#f1f4fb] text-[#6b748c]">
+											<svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2">
+												<rect x="3" y="5" width="18" height="14" rx="2"></rect>
+												<path d="m3 8 9 6 9-6"></path>
+											</svg>
+										</span>
+										<span class="text-[1.15rem] font-medium sm:text-[1.35rem]">info@7eventzz.com</span>
+									</a>
+								</div>
+
+								<div class="mt-7">
+									<p class="text-sm font-bold tracking-[0.2em] text-[#8d97af]">FOLLOW US</p>
+									<div class="mt-3 flex flex-wrap gap-2.5">
+										<a href="#" aria-label="Instagram" class="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#f5f0ff] text-[#b46ef0]">
+											<svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2">
+												<rect x="4" y="4" width="16" height="16" rx="4"></rect>
+												<circle cx="12" cy="12" r="3.2"></circle>
+												<circle cx="17" cy="7" r="0.8" fill="currentColor"></circle>
+											</svg>
+										</a>
+										<a href="#" aria-label="Facebook" class="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#edf4ff] text-[#5e8fe8]">
+											<svg viewBox="0 0 24 24" class="h-5 w-5" fill="currentColor" aria-hidden="true">
+												<path d="M13.5 8H16V4.5h-2.5c-3 0-5 2-5 5V12H6v3.5h2.5V20H12v-4.5h3l.5-3.5H12V9.8c0-1.1.4-1.8 1.5-1.8z"/>
+											</svg>
+										</a>
+										<a href="#" aria-label="YouTube" class="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#fff1f1] text-[#de7d7d]">
+											<svg viewBox="0 0 24 24" class="h-5 w-5" fill="currentColor" aria-hidden="true">
+												<path d="M21.6 7.2a2.7 2.7 0 0 0-1.9-1.9C18 5 12 5 12 5s-6 0-7.7.3a2.7 2.7 0 0 0-1.9 1.9C2 9 2 12 2 12s0 3 .4 4.8a2.7 2.7 0 0 0 1.9 1.9C6 19 12 19 12 19s6 0 7.7-.3a2.7 2.7 0 0 0 1.9-1.9C22 15 22 12 22 12s0-3-.4-4.8zM10 15.2V8.8L15.5 12 10 15.2z"/>
+											</svg>
+										</a>
+										<a href="#" aria-label="X" class="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#f3f4f8] text-[#7c8497]">
+											<svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2">
+												<path d="M4 4l16 16"></path>
+												<path d="M20 4 4 20"></path>
+											</svg>
+										</a>
+										<a href="#" aria-label="LinkedIn" class="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#eef7ff] text-[#5da1cf]">
+											<svg viewBox="0 0 24 24" class="h-5 w-5" fill="currentColor" aria-hidden="true">
+												<path d="M6.5 8.5A1.5 1.5 0 1 0 6.5 5a1.5 1.5 0 0 0 0 3.5zM5 9.8h3V19H5zM10 9.8h2.9v1.3h.1c.4-.7 1.4-1.5 2.9-1.5 3.1 0 3.6 2 3.6 4.6V19h-3v-4c0-1-.1-2.3-1.4-2.3-1.4 0-1.6 1-1.6 2.2V19h-3V9.8z"/>
+											</svg>
+										</a>
+									</div>
+								</div>
+							</div>
+
+							<div class="grid grid-cols-2 gap-7 sm:gap-8">
+								<div>
+									<h3 class="text-sm font-extrabold tracking-[0.14em] text-[#1f2a44] sm:text-base">IMPORTANT LINKS</h3>
+									<ul class="mt-3 space-y-2.5 text-base text-[#4f5e7c] sm:text-[1.35rem]">
+										{
+											footerImportantLinks.map((link) => (
+												<li><a href="#" class="hover:text-[#4e3fd6]">{link}</a></li>
+											))
+										}
+									</ul>
+								</div>
+
+								<div>
+									<h3 class="text-sm font-extrabold tracking-[0.14em] text-[#1f2a44] sm:text-base">TOP CATEGORIES</h3>
+									<ul class="mt-3 space-y-2.5 text-base text-[#4f5e7c] sm:text-[1.35rem]">
+										{
+											footerTopCategories.map((category) => (
+												<li><a href="#" class="hover:text-[#4e3fd6]">{category}</a></li>
+											))
+										}
+									</ul>
+								</div>
+
+								<div>
+									<h3 class="flex items-center gap-1.5 text-sm font-extrabold tracking-[0.14em] text-[#1f2a44] sm:text-base">
+										<svg viewBox="0 0 24 24" class="h-4 w-4 text-[#6b3fe7]" fill="none" stroke="currentColor" stroke-width="2">
+											<path d="M12 21s7-4.35 7-11a7 7 0 1 0-14 0c0 6.65 7 11 7 11z"></path>
+											<circle cx="12" cy="10" r="2.3"></circle>
+										</svg>
+										TOP LOCATION
+									</h3>
+									<ul class="mt-3 space-y-2.5 text-base text-[#4f5e7c] sm:text-[1.35rem]">
+										{
+											footerTopLocations.map((location) => (
+												<li><a href="#" class="hover:text-[#4e3fd6]">{location}</a></li>
+											))
+										}
+									</ul>
+								</div>
+
+								<div>
+									<h3 class="text-sm font-extrabold tracking-[0.14em] text-[#1f2a44] sm:text-base">INFO</h3>
+									<ul class="mt-3 space-y-2.5 text-base text-[#4f5e7c] sm:text-[1.35rem]">
+										{
+											footerInfoLinks.map((link) => (
+												<li><a href="#" class="hover:text-[#4e3fd6]">{link}</a></li>
+											))
+										}
+									</ul>
+								</div>
+							</div>
+						</div>
+
+						<div class="mt-8 border-t border-[#e3e9f7] pt-4 text-center text-sm font-medium text-[#6c7892] sm:text-base">
+							&copy; balloondecorationjaipur.com. All rights reserved.
+						</div>
+					</footer>
+				</div>
+			</section>
+		</div>
+
+		<nav
+			class="fixed inset-x-0 bottom-0 z-50 border-t border-[#d9e3f2] bg-white/95 px-4 pt-2 pb-[max(0.45rem,env(safe-area-inset-bottom))] shadow-[0_-10px_26px_-20px_rgba(71,94,150,0.8)] backdrop-blur lg:hidden"
+		>
+			<ul class="mx-auto grid max-w-md grid-cols-4 gap-1">
+				<li>
+					<a href="#" class="flex flex-col items-center gap-1 text-[#5b4fda]">
+						<span class="flex h-10 w-10 items-center justify-center rounded-2xl bg-[#efe8ff]">
+							<svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2">
+								<path d="M3 11.5 12 4l9 7.5"></path>
+								<path d="M6.5 10.5V20h11V10.5"></path>
+							</svg>
+						</span>
+						<span class="text-sm font-medium">Home</span>
+					</a>
+				</li>
+				<li>
+					<a href="/explore" class="flex flex-col items-center gap-1 text-[#6c758b]">
+						<span class="flex h-10 w-10 items-center justify-center rounded-2xl bg-[#f2f5fb]">
+							<svg viewBox="0 0 24 24" class="h-6 w-6" fill="currentColor" aria-hidden="true">
+								<path d="M4 5.5A1.5 1.5 0 0 1 5.5 4H10a1.5 1.5 0 0 1 1.5 1.5V10A1.5 1.5 0 0 1 10 11.5H5.5A1.5 1.5 0 0 1 4 10V5.5zm8.5 0A1.5 1.5 0 0 1 14 4h4.5A1.5 1.5 0 0 1 20 5.5V10a1.5 1.5 0 0 1-1.5 1.5H14a1.5 1.5 0 0 1-1.5-1.5V5.5zM4 14a1.5 1.5 0 0 1 1.5-1.5H10A1.5 1.5 0 0 1 11.5 14v4.5A1.5 1.5 0 0 1 10 20H5.5A1.5 1.5 0 0 1 4 18.5V14zm8.5 0A1.5 1.5 0 0 1 14 12.5h4.5A1.5 1.5 0 0 1 20 14v4.5A1.5 1.5 0 0 1 18.5 20H14a1.5 1.5 0 0 1-1.5-1.5V14z"/>
+							</svg>
+						</span>
+						<span class="text-sm font-medium text-[#5f6b86]">Explore</span>
+					</a>
+				</li>
+				<li>
+					<a href="#" class="flex flex-col items-center gap-1 text-[#6c758b]">
+						<span class="flex h-10 w-10 items-center justify-center rounded-2xl bg-[#f2f5fb]">
+							<svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2">
+								<path d="M22 16.9v3a2.1 2.1 0 0 1-2.3 2.1A19.2 19.2 0 0 1 3 5.3 2.1 2.1 0 0 1 5.1 3h3a2 2 0 0 1 2 1.7c.1 1 .3 1.9.7 2.8a2 2 0 0 1-.4 2.1l-1.2 1.2a16 16 0 0 0 4.9 4.9l1.2-1.2a2 2 0 0 1 2.1-.4c.9.4 1.8.6 2.8.7A2 2 0 0 1 22 16.9z"></path>
+							</svg>
+						</span>
+						<span class="text-sm font-medium text-[#5f6b86]">Call</span>
+					</a>
+				</li>
+				<li>
+					<a href="#" class="flex flex-col items-center gap-1 text-[#27b45c]">
+						<span class="flex h-10 w-10 items-center justify-center rounded-2xl bg-[#e9f9ef]">
+							<svg viewBox="0 0 24 24" class="h-6 w-6" fill="currentColor" aria-hidden="true">
+								<path d="M12.04 2C6.58 2 2.15 6.36 2.15 11.72c0 2.12.7 4.16 1.99 5.84L2 22l4.62-1.2a10.05 10.05 0 0 0 5.42 1.58h.01c5.46 0 9.89-4.36 9.89-9.72S17.5 2 12.04 2zm5.8 13.58c-.24.66-1.4 1.25-1.95 1.34-.5.08-1.13.12-1.82-.1-.42-.13-.97-.31-1.67-.6-2.94-1.25-4.85-4.2-4.99-4.4-.13-.19-1.2-1.55-1.2-2.96 0-1.42.74-2.11 1-2.39.26-.28.57-.35.76-.35.19 0 .38 0 .54.01.17.01.4-.06.62.47.24.58.82 2 .89 2.15.07.15.11.33.02.52-.09.19-.13.31-.26.48-.13.17-.27.38-.39.51-.13.13-.26.27-.11.53.14.25.62 1.01 1.33 1.63.92.81 1.7 1.06 1.95 1.18.24.12.38.1.52-.06.14-.16.6-.69.76-.93.16-.24.33-.2.55-.12.22.08 1.41.66 1.66.78.25.12.41.18.47.28.06.1.06.6-.18 1.26z"/>
+							</svg>
+						</span>
+						<span class="text-sm font-medium text-[#5f6b86]">WhatsApp</span>
+					</a>
+				</li>
+			</ul>
+		</nav>
+
+		<div
+			id="mobile-menu-overlay"
+			class="pointer-events-none fixed inset-0 z-[70] bg-[#313750]/40 opacity-0 transition-opacity duration-300 lg:hidden"
+			aria-hidden="true"
+		>
+			<aside
+				id="mobile-menu-panel"
+				class="h-full w-[86%] max-w-[340px] -translate-x-full overflow-y-auto bg-[#f5f7fc] p-3 shadow-[16px_0_40px_-20px_rgba(37,43,77,0.7)] transition-transform duration-300 ease-out"
+			>
+				<div class="rounded-[24px] border border-[#e5ebf7] bg-white/70">
+						{
+							mobileDrawerCategories.map((category) => (
+								<a
+									href={categoryHref(category)}
+									data-close-mobile-menu
+									class="flex items-center justify-between border-b border-[#ebeff8] px-5 py-5 text-[18px] font-medium leading-none text-[#3e495f] last:border-b-0"
+								>
+								<span>{category}</span>
+								<svg
+									viewBox="0 0 24 24"
+									class="h-5 w-5 text-[#97a2b8]"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+								>
+									<path d="m9 18 6-6-6-6"></path>
+								</svg>
+							</a>
+						))
+					}
+				</div>
+
+				<section class="mt-5 rounded-[24px] border border-[#e5ebf7] bg-white/70">
+					<div class="px-5 pt-4 pb-2 text-[12px] font-extrabold tracking-[0.14em] text-[#9aa5bb]">CONTACT US</div>
+
+					<a
+						href="#"
+						data-close-mobile-menu
+						class="flex items-center gap-3 border-b border-[#ebeff8] px-5 py-4 last:border-b-0"
+					>
+						<span class="flex h-10 w-10 items-center justify-center rounded-xl border border-[#e3eaf7] bg-white text-[#22c35e] shadow-sm">
+							<svg viewBox="0 0 24 24" class="h-5 w-5" fill="currentColor" aria-hidden="true">
+								<path d="M12.04 2C6.58 2 2.15 6.36 2.15 11.72c0 2.12.7 4.16 1.99 5.84L2 22l4.62-1.2a10.05 10.05 0 0 0 5.42 1.58h.01c5.46 0 9.89-4.36 9.89-9.72S17.5 2 12.04 2zm5.8 13.58c-.24.66-1.4 1.25-1.95 1.34-.5.08-1.13.12-1.82-.1-.42-.13-.97-.31-1.67-.6-2.94-1.25-4.85-4.2-4.99-4.4-.13-.19-1.2-1.55-1.2-2.96 0-1.42.74-2.11 1-2.39.26-.28.57-.35.76-.35.19 0 .38 0 .54.01.17.01.4-.06.62.47.24.58.82 2 .89 2.15.07.15.11.33.02.52-.09.19-.13.31-.26.48-.13.17-.27.38-.39.51-.13.13-.26.27-.11.53.14.25.62 1.01 1.33 1.63.92.81 1.7 1.06 1.95 1.18.24.12.38.1.52-.06.14-.16.6-.69.76-.93.16-.24.33-.2.55-.12.22.08 1.41.66 1.66.78.25.12.41.18.47.28.06.1.06.6-.18 1.26z"/>
+							</svg>
+						</span>
+						<span class="flex-1">
+							<span class="block text-[16px] font-semibold text-[#1eae53]">WhatsApp Us</span>
+							<span class="block text-xs text-[#8c96aa]">Available 24x7</span>
+						</span>
+						<svg viewBox="0 0 24 24" class="h-5 w-5 text-[#a3adc1]" fill="none" stroke="currentColor" stroke-width="2">
+							<path d="m9 18 6-6-6-6"></path>
+						</svg>
+					</a>
+
+					<a
+						href="#"
+						data-close-mobile-menu
+						class="flex items-center gap-3 border-b border-[#ebeff8] px-5 py-4 last:border-b-0"
+					>
+						<span class="flex h-10 w-10 items-center justify-center rounded-xl border border-[#e3eaf7] bg-white text-[#3a79eb] shadow-sm">
+							<svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2">
+								<path d="M22 16.9v3a2.1 2.1 0 0 1-2.3 2.1A19.2 19.2 0 0 1 3 5.3 2.1 2.1 0 0 1 5.1 3h3a2 2 0 0 1 2 1.7c.1 1 .3 1.9.7 2.8a2 2 0 0 1-.4 2.1l-1.2 1.2a16 16 0 0 0 4.9 4.9l1.2-1.2a2 2 0 0 1 2.1-.4c.9.4 1.8.6 2.8.7A2 2 0 0 1 22 16.9z"></path>
+							</svg>
+						</span>
+						<span class="flex-1">
+							<span class="block text-[16px] font-semibold text-[#3372e3]">Call Us</span>
+							<span class="block text-xs text-[#8c96aa]">10AM - 7:30PM</span>
+						</span>
+						<svg viewBox="0 0 24 24" class="h-5 w-5 text-[#a3adc1]" fill="none" stroke="currentColor" stroke-width="2">
+							<path d="m9 18 6-6-6-6"></path>
+						</svg>
+					</a>
+
+					<a
+						href="#"
+						data-close-mobile-menu
+						class="flex items-center gap-3 border-b border-[#ebeff8] px-5 py-4 last:border-b-0"
+					>
+						<span class="flex h-10 w-10 items-center justify-center rounded-xl border border-[#e3eaf7] bg-white text-[#7d879a] shadow-sm">
+							<svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2">
+								<rect x="3" y="5" width="18" height="14" rx="2"></rect>
+								<path d="m3 8 9 6 9-6"></path>
+							</svg>
+						</span>
+						<span class="flex-1">
+							<span class="block text-[16px] font-semibold text-[#4f596d]">Email Us</span>
+							<span class="block text-xs text-[#8c96aa]">info@7eventzz.com</span>
+						</span>
+						<svg viewBox="0 0 24 24" class="h-5 w-5 text-[#a3adc1]" fill="none" stroke="currentColor" stroke-width="2">
+							<path d="m9 18 6-6-6-6"></path>
+						</svg>
+					</a>
+				</section>
+			</aside>
+		</div>
+	</main>
+
+	<script id="home-search-index" type="application/json">{JSON.stringify(homeSearchIndex)}</script>
+
+	<script>
+		const menuButton = document.getElementById('mobile-menu-button');
+		const menuOverlay = document.getElementById('mobile-menu-overlay');
+		const menuPanel = document.getElementById('mobile-menu-panel');
+		const closeLinks = document.querySelectorAll('[data-close-mobile-menu]');
+		const desktopSearchInput = document.getElementById('home-search-input-desktop');
+		const mobileSearchInput = document.getElementById('home-search-input-mobile');
+		const desktopSearchButton = document.getElementById('home-search-button-desktop');
+		const mobileSearchButton = document.getElementById('home-search-button-mobile');
+		const homeSearchIndexNode = document.getElementById('home-search-index');
+		const parseHomeSearchIndex = () => {
+			if (!homeSearchIndexNode?.textContent) return [];
+			try {
+				const parsed = JSON.parse(homeSearchIndexNode.textContent);
+				return Array.isArray(parsed) ? parsed : [];
+			} catch {
+				return [];
+			}
+		};
+		const homeSearchIndex = parseHomeSearchIndex();
+
+		const normalizeSearchText = (value) => value.toLowerCase().replace(/[^a-z0-9\s]/g, ' ').replace(/\s+/g, ' ').trim();
+
+		const findHomeSearchMatch = (query) => {
+			const normalizedQuery = normalizeSearchText(query);
+			if (!normalizedQuery) return null;
+
+			const exactMatch = homeSearchIndex.find((entry) => normalizeSearchText(entry.term) === normalizedQuery);
+			if (exactMatch) return exactMatch;
+
+			const startsWithMatch = homeSearchIndex.find((entry) =>
+				normalizeSearchText(entry.term).startsWith(normalizedQuery)
+			);
+			if (startsWithMatch) return startsWithMatch;
+
+			return homeSearchIndex.find((entry) => normalizeSearchText(entry.term).includes(normalizedQuery)) || null;
+		};
+
+		const runHomeSearch = (sourceInput) => {
+			if (!(sourceInput instanceof HTMLInputElement)) return;
+			const query = sourceInput.value.trim();
+			if (!query) return;
+
+			const match = findHomeSearchMatch(query);
+			if (match?.slug) {
+				window.location.href = `/category/${match.slug}?q=${encodeURIComponent(query)}`;
+				return;
+			}
+
+			window.location.href = `/explore?q=${encodeURIComponent(query)}`;
+		};
+
+		const bindHomeSearchInput = (input) => {
+			if (!(input instanceof HTMLInputElement)) return;
+			input.addEventListener('keydown', (event) => {
+				if (event.key !== 'Enter') return;
+				event.preventDefault();
+				runHomeSearch(input);
+			});
+		};
+
+		bindHomeSearchInput(desktopSearchInput);
+		bindHomeSearchInput(mobileSearchInput);
+
+		desktopSearchButton?.addEventListener('click', () => runHomeSearch(desktopSearchInput));
+		mobileSearchButton?.addEventListener('click', () => runHomeSearch(mobileSearchInput));
+
+		const openMenu = () => {
+			if (!menuOverlay || !menuPanel) return;
+			menuOverlay.classList.remove('opacity-0', 'pointer-events-none');
+			menuPanel.classList.remove('-translate-x-full');
+			document.body.classList.add('overflow-hidden');
+		};
+
+		const closeMenu = () => {
+			if (!menuOverlay || !menuPanel) return;
+			menuOverlay.classList.add('opacity-0', 'pointer-events-none');
+			menuPanel.classList.add('-translate-x-full');
+			document.body.classList.remove('overflow-hidden');
+		};
+
+		menuButton?.addEventListener('click', () => {
+			if (!menuOverlay) return;
+			const isClosed = menuOverlay.classList.contains('opacity-0');
+			if (isClosed) openMenu();
+			else closeMenu();
+		});
+
+		// Fallback delegated handler to keep burger reliable across dynamic page swaps.
+		document.addEventListener('click', (event) => {
+			const target = event.target;
+			if (!(target instanceof Element)) return;
+			const trigger = target.closest('#mobile-menu-button');
+			if (!trigger) return;
+
+			const overlay = document.getElementById('mobile-menu-overlay');
+			const panel = document.getElementById('mobile-menu-panel');
+			if (!overlay || !panel) return;
+
+			const isClosed = overlay.classList.contains('opacity-0');
+			if (isClosed) {
+				overlay.classList.remove('opacity-0', 'pointer-events-none');
+				panel.classList.remove('-translate-x-full');
+				document.body.classList.add('overflow-hidden');
+			} else {
+				overlay.classList.add('opacity-0', 'pointer-events-none');
+				panel.classList.add('-translate-x-full');
+				document.body.classList.remove('overflow-hidden');
+			}
+		});
+
+		menuOverlay?.addEventListener('click', (event) => {
+			if (event.target === menuOverlay) closeMenu();
+		});
+
+		document.addEventListener('keydown', (event) => {
+			if (event.key === 'Escape') closeMenu();
+		});
+
+		closeLinks.forEach((element) => {
+			element.addEventListener('click', () => closeMenu());
+		});
+
+		const setupCarousel = (prefix) => {
+			const track = document.getElementById(`${prefix}-carousel-track`);
+			const prev = document.getElementById(`${prefix}-carousel-prev`);
+			const next = document.getElementById(`${prefix}-carousel-next`);
+			if (!track) return;
+
+			const scrollByOne = (direction) => {
+				const firstSlide = track.querySelector('[data-carousel-slide]');
+				if (!(firstSlide instanceof HTMLElement)) return;
+				const styles = window.getComputedStyle(track);
+				const gap = Number.parseFloat(styles.columnGap || styles.gap || '12') || 12;
+				const offset = firstSlide.getBoundingClientRect().width + gap;
+				track.scrollBy({ left: offset * direction, behavior: 'smooth' });
+			};
+
+			prev?.addEventListener('click', () => scrollByOne(-1));
+			next?.addEventListener('click', () => scrollByOne(1));
+		};
+
+		['kids', 'wedding', 'romantic', 'review'].forEach((name) => setupCarousel(name));
+
+		const faqEntries = document.querySelectorAll('[data-faq-item]');
+
+		const setFaqState = (entry, isOpen) => {
+			entry.dataset.open = isOpen ? 'true' : 'false';
+			entry.classList.toggle('border-[#cbb7fb]', isOpen);
+			entry.classList.toggle('bg-[#f3edff]', isOpen);
+			entry.classList.toggle('border-[#e6ebf7]', !isOpen);
+			entry.classList.toggle('bg-white', !isOpen);
+
+			const content = entry.querySelector('[data-faq-content]');
+			const iconWrap = entry.querySelector('[data-faq-icon-wrap]');
+			const plusIcon = entry.querySelector('[data-faq-plus]');
+			const minusIcon = entry.querySelector('[data-faq-minus]');
+
+			content?.classList.toggle('hidden', !isOpen);
+			plusIcon?.classList.toggle('hidden', isOpen);
+			minusIcon?.classList.toggle('hidden', !isOpen);
+
+			iconWrap?.classList.toggle('bg-[#6b3fe7]', isOpen);
+			iconWrap?.classList.toggle('text-white', isOpen);
+			iconWrap?.classList.toggle('bg-[#eff2f7]', !isOpen);
+			iconWrap?.classList.toggle('text-[#75819b]', !isOpen);
+		};
+
+		faqEntries.forEach((entry) => {
+			setFaqState(entry, entry.dataset.open === 'true');
+
+			const toggle = entry.querySelector('[data-faq-toggle]');
+			toggle?.addEventListener('click', () => {
+				const wasOpen = entry.dataset.open === 'true';
+				faqEntries.forEach((otherEntry) => setFaqState(otherEntry, false));
+				if (!wasOpen) setFaqState(entry, true);
+			});
+		});
+	</script>
+</Layout>
+

@@ -1,0 +1,238 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { categoryCatalog, type CategoryPageData } from '../../data/category-data';
+
+export function getStaticPaths() {
+	return categoryCatalog.map((category) => ({
+		params: { slug: category.slug },
+		props: { category },
+	}));
+}
+
+const { category } = Astro.props as { category: CategoryPageData };
+const uniqueTags = Array.from(new Set(category.cards.flatMap((card) => card.tags)));
+const filterTags = ['All', ...uniqueTags];
+---
+
+<Layout title={`${category.title} | Balloon Decoration Jaipur`}>
+	<main class="min-h-screen bg-[linear-gradient(180deg,#edf3ff_0%,#f5f8ff_36%,#f4f7fd_100%)] pb-28 lg:pb-10">
+		<div class="mx-auto w-full max-w-[1320px] px-4 pt-4 sm:px-6 lg:px-8">
+			<section>
+				<div class="grid gap-5 lg:grid-cols-[1.15fr_1fr] lg:items-center">
+					<div>
+						<a href="/explore" class="inline-flex items-center gap-2 text-sm font-semibold text-[#58637f] hover:text-[#433fbb]">
+							<svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2">
+								<path d="m15 18-6-6 6-6"></path>
+							</svg>
+							<span>Back to categories</span>
+						</a>
+						<h1 class="mt-3 text-3xl font-extrabold leading-tight tracking-tight text-[#1f2a44] sm:text-4xl lg:text-5xl">
+							{category.title}
+						</h1>
+						<p class="mt-2 max-w-[600px] text-base text-[#5f6b86] sm:text-lg lg:text-xl">{category.subtitle}</p>
+					</div>
+					<img
+						src={category.heroImage}
+						alt={`${category.title} hero`}
+						class="h-52 w-full rounded-[24px] border border-[#e3eaf7] object-cover sm:h-64 lg:h-72"
+					/>
+				</div>
+			</section>
+
+			<section class="mt-6">
+				<div class="grid gap-3 lg:grid-cols-[1.1fr_1fr] lg:items-center">
+					<div class="flex items-center gap-3 rounded-2xl border border-[#dbe4f5] bg-white px-4 py-3">
+						<svg viewBox="0 0 24 24" class="h-5 w-5 shrink-0 text-[#75819b]" fill="none" stroke="currentColor" stroke-width="2">
+							<circle cx="11" cy="11" r="7"></circle>
+							<line x1="16.65" y1="16.65" x2="21" y2="21"></line>
+						</svg>
+						<input
+							id="decor-search"
+							type="search"
+							placeholder="Search setups..."
+							class="w-full min-w-0 bg-transparent text-base text-[#2d3752] placeholder:text-[#8c96ac] focus:outline-none"
+						/>
+					</div>
+					<p id="decor-count" class="text-sm font-medium text-[#65728f] lg:text-right"></p>
+				</div>
+
+				<div class="hide-scrollbar mt-3 flex gap-2 overflow-x-auto pb-1">
+					{
+						filterTags.map((tag, index) => (
+							<button
+								type="button"
+								data-filter-chip
+								data-filter-value={tag}
+								class={`shrink-0 rounded-full border px-3 py-1.5 text-xs font-semibold transition sm:px-4 sm:text-sm ${
+									index === 0
+										? 'border-[#5b4fda] bg-[#5b4fda] text-white'
+										: 'border-[#d6dff3] bg-[#f7f9ff] text-[#4f5b79] hover:bg-[#edf2ff]'
+								}`}
+							>
+								{tag}
+							</button>
+						))
+					}
+				</div>
+
+				<div class="mt-5 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3 xl:grid-cols-4">
+					{
+						category.cards.map((card) => (
+							<article
+								data-decor-card
+								data-card-title={card.title.toLowerCase()}
+								data-card-tags={card.tags.join('|').toLowerCase()}
+								class="overflow-hidden rounded-2xl border border-[#d9e3f2] bg-white shadow-[0_14px_24px_-22px_rgba(54,67,122,0.36)]"
+							>
+								<img src={card.image} alt={card.title} class="h-36 w-full object-cover sm:h-44" loading="lazy" />
+								<div class="p-3">
+									<p class="text-xs text-[#6f7b96]">At your location</p>
+									<h2 class="mt-1 text-[0.95rem] font-semibold leading-tight text-[#1f2a44] sm:text-[1.02rem]">
+										{card.title}
+									</h2>
+									<div class="mt-2 flex items-center gap-1.5 text-[#f2bf2f]">
+										<span class="text-xs">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
+										<span class="text-xs font-medium text-[#5f6b86]">{card.rating} ({card.reviews})</span>
+									</div>
+									<a
+										href={`https://wa.me/917450960060?text=${encodeURIComponent(`Hi, I want to book ${card.title} in Jaipur`)}`}
+										target="_blank"
+										rel="noreferrer"
+										class="mt-2.5 inline-flex w-full items-center justify-center rounded-lg bg-gradient-to-r from-[#5b4fda] to-[#7a4def] px-4 py-2 text-xs font-bold text-white"
+									>
+										BOOK NOW
+									</a>
+								</div>
+							</article>
+						))
+					}
+				</div>
+
+				<p id="decor-empty" class="hidden py-8 text-center text-base font-medium text-[#7e89a0]">
+					No matching setups found. Try another filter.
+				</p>
+			</section>
+		</div>
+
+		<nav
+			class="fixed inset-x-0 bottom-0 z-50 border-t border-[#d9e3f2] bg-white/95 px-4 pt-2 pb-[max(0.45rem,env(safe-area-inset-bottom))] shadow-[0_-10px_26px_-20px_rgba(71,94,150,0.8)] backdrop-blur lg:hidden"
+		>
+			<ul class="mx-auto grid max-w-md grid-cols-4 gap-1">
+				<li>
+					<a href="/" class="flex flex-col items-center gap-1 text-[#6c758b]">
+						<span class="flex h-10 w-10 items-center justify-center rounded-2xl bg-[#f2f5fb]">
+							<svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2">
+								<path d="M3 11.5 12 4l9 7.5"></path>
+								<path d="M6.5 10.5V20h11V10.5"></path>
+							</svg>
+						</span>
+						<span class="text-sm font-medium">Home</span>
+					</a>
+				</li>
+				<li>
+					<a href="/explore" class="flex flex-col items-center gap-1 text-[#5b4fda]">
+						<span class="flex h-10 w-10 items-center justify-center rounded-2xl bg-[#efe8ff]">
+							<svg viewBox="0 0 24 24" class="h-6 w-6" fill="currentColor" aria-hidden="true">
+								<path d="M4 5.5A1.5 1.5 0 0 1 5.5 4H10a1.5 1.5 0 0 1 1.5 1.5V10A1.5 1.5 0 0 1 10 11.5H5.5A1.5 1.5 0 0 1 4 10V5.5zm8.5 0A1.5 1.5 0 0 1 14 4h4.5A1.5 1.5 0 0 1 20 5.5V10a1.5 1.5 0 0 1-1.5 1.5H14a1.5 1.5 0 0 1-1.5-1.5V5.5zM4 14a1.5 1.5 0 0 1 1.5-1.5H10A1.5 1.5 0 0 1 11.5 14v4.5A1.5 1.5 0 0 1 10 20H5.5A1.5 1.5 0 0 1 4 18.5V14zm8.5 0A1.5 1.5 0 0 1 14 12.5h4.5A1.5 1.5 0 0 1 20 14v4.5A1.5 1.5 0 0 1 18.5 20H14a1.5 1.5 0 0 1-1.5-1.5V14z" />
+							</svg>
+						</span>
+						<span class="text-sm font-medium">Explore</span>
+					</a>
+				</li>
+				<li>
+					<a href="tel:+917450960060" class="flex flex-col items-center gap-1 text-[#6c758b]">
+						<span class="flex h-10 w-10 items-center justify-center rounded-2xl bg-[#f2f5fb]">
+							<svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2">
+								<path d="M22 16.9v3a2.1 2.1 0 0 1-2.3 2.1A19.2 19.2 0 0 1 3 5.3 2.1 2.1 0 0 1 5.1 3h3a2 2 0 0 1 2 1.7c.1 1 .3 1.9.7 2.8a2 2 0 0 1-.4 2.1l-1.2 1.2a16 16 0 0 0 4.9 4.9l1.2-1.2a2 2 0 0 1 2.1-.4c.9.4 1.8.6 2.8.7A2 2 0 0 1 22 16.9z"></path>
+							</svg>
+						</span>
+						<span class="text-sm font-medium text-[#5f6b86]">Call</span>
+					</a>
+				</li>
+				<li>
+					<a href="https://wa.me/917450960060" class="flex flex-col items-center gap-1 text-[#27b45c]">
+						<span class="flex h-10 w-10 items-center justify-center rounded-2xl bg-[#e9f9ef]">
+							<svg viewBox="0 0 24 24" class="h-6 w-6" fill="currentColor" aria-hidden="true">
+								<path d="M12.04 2C6.58 2 2.15 6.36 2.15 11.72c0 2.12.7 4.16 1.99 5.84L2 22l4.62-1.2a10.05 10.05 0 0 0 5.42 1.58h.01c5.46 0 9.89-4.36 9.89-9.72S17.5 2 12.04 2zm5.8 13.58c-.24.66-1.4 1.25-1.95 1.34-.5.08-1.13.12-1.82-.1-.42-.13-.97-.31-1.67-.6-2.94-1.25-4.85-4.2-4.99-4.4-.13-.19-1.2-1.55-1.2-2.96 0-1.42.74-2.11 1-2.39.26-.28.57-.35.76-.35.19 0 .38 0 .54.01.17.01.4-.06.62.47.24.58.82 2 .89 2.15.07.15.11.33.02.52-.09.19-.13.31-.26.48-.13.17-.27.38-.39.51-.13.13-.26.27-.11.53.14.25.62 1.01 1.33 1.63.92.81 1.7 1.06 1.95 1.18.24.12.38.1.52-.06.14-.16.6-.69.76-.93.16-.24.33-.2.55-.12.22.08 1.41.66 1.66.78.25.12.41.18.47.28.06.1.06.6-.18 1.26z" />
+							</svg>
+						</span>
+						<span class="text-sm font-medium text-[#5f6b86]">WhatsApp</span>
+					</a>
+				</li>
+			</ul>
+		</nav>
+	</main>
+
+	<script>
+		const initCategoryFilters = () => {
+			const searchInput = document.getElementById('decor-search');
+			const filterChips = Array.from(document.querySelectorAll('[data-filter-chip]'));
+			const cards = Array.from(document.querySelectorAll('[data-decor-card]'));
+			const emptyMessage = document.getElementById('decor-empty');
+			const countLabel = document.getElementById('decor-count');
+
+			if (!(searchInput instanceof HTMLInputElement) || filterChips.length === 0 || cards.length === 0) return;
+			if (searchInput.dataset.bound === 'true') return;
+			searchInput.dataset.bound = 'true';
+
+			const normalize = (value) => value.toLowerCase().replace(/\s+/g, ' ').trim();
+			let activeTag = 'all';
+
+			const updateFilterUi = () => {
+				filterChips.forEach((chip) => {
+					const value = normalize(chip.getAttribute('data-filter-value') || '');
+					const isActive = value === activeTag;
+					chip.classList.toggle('border-[#5b4fda]', isActive);
+					chip.classList.toggle('bg-[#5b4fda]', isActive);
+					chip.classList.toggle('text-white', isActive);
+					chip.classList.toggle('border-[#d6dff3]', !isActive);
+					chip.classList.toggle('bg-[#f7f9ff]', !isActive);
+					chip.classList.toggle('text-[#4f5b79]', !isActive);
+				});
+			};
+
+			const runFilters = () => {
+				const query = normalize(searchInput.value);
+				let visibleCount = 0;
+
+				cards.forEach((card) => {
+					const title = normalize(card.getAttribute('data-card-title') || '');
+					const tags = normalize(card.getAttribute('data-card-tags') || '').split('|');
+					const queryMatch = query.length === 0 || title.includes(query);
+					const tagMatch = activeTag === 'all' || tags.includes(activeTag);
+					const visible = queryMatch && tagMatch;
+					card.classList.toggle('hidden', !visible);
+					if (visible) visibleCount += 1;
+				});
+
+				emptyMessage?.classList.toggle('hidden', visibleCount !== 0);
+				if (countLabel) countLabel.textContent = `${visibleCount} setup${visibleCount === 1 ? '' : 's'} available`;
+			};
+
+			const queryFromUrl = new URLSearchParams(window.location.search).get('q');
+			if (queryFromUrl) searchInput.value = queryFromUrl;
+
+			searchInput.addEventListener('input', runFilters);
+			searchInput.addEventListener('search', runFilters);
+
+			filterChips.forEach((chip) => {
+				chip.addEventListener('click', () => {
+					activeTag = normalize(chip.getAttribute('data-filter-value') || 'all');
+					updateFilterUi();
+					runFilters();
+				});
+			});
+
+			updateFilterUi();
+			runFilters();
+		};
+
+		if (document.readyState === 'loading') {
+			document.addEventListener('DOMContentLoaded', initCategoryFilters, { once: true });
+		} else {
+			initCategoryFilters();
+		}
+
+		document.addEventListener('astro:page-load', initCategoryFilters);
+	</script>
+</Layout>

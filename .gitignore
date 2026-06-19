@@ -22,3 +22,7 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# Ignore all directories in public except Categories
+public/*/
+!public/Categories/

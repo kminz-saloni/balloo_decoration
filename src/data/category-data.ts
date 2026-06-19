@@ -68,7 +68,7 @@ const categoryDefinitions = [
 		slug: 'birthday-decoration',
 		title: 'Birthday Decoration',
 		subtitle: 'Stylish birthday setups crafted for memorable celebrations in Jaipur.',
-		heroImage: '/Categories/Birthday.webp',
+		heroImage: 'https://camsstorage2026abcd.blob.core.windows.net/balooon/Categories/Birthday.webp',
 		imagePool: [
 			'https://camsstorage2026abcd.blob.core.windows.net/balooon/happy%20birthday/18th%20Birthday%20Ring%20Decoration.webp',
 			'https://camsstorage2026abcd.blob.core.windows.net/balooon/happy%20birthday/20%20Million%20Celebration%20Decoration.webp',
@@ -288,7 +288,7 @@ const categoryDefinitions = [
 		slug: 'kids-theme-decoration',
 		title: 'Kids Theme Decoration',
 		subtitle: 'Colorful and joyful theme concepts designed especially for kids events.',
-		heroImage: '/Categories/Kids%20Special.webp',
+		heroImage: 'https://camsstorage2026abcd.blob.core.windows.net/balooon/Categories/Kids%20Special.webp',
 		imagePool: [
 			'https://camsstorage2026abcd.blob.core.windows.net/balooon/kids%20theme/1st%20Birthday%20Balloon%20Decor.webp',
 			'https://camsstorage2026abcd.blob.core.windows.net/balooon/kids%20theme/1st%20Birthday%20Decoration%20At%20Home.webp',
@@ -534,7 +534,7 @@ const categoryDefinitions = [
 		slug: 'anniversary-decoration',
 		title: 'Anniversary Decoration',
 		subtitle: 'Elegant anniversary decor options for intimate and grand moments.',
-		heroImage: '/Categories/Anniversary%20Decor.webp',
+		heroImage: 'https://camsstorage2026abcd.blob.core.windows.net/balooon/Categories/Anniversary%20Decor.webp',
 		imagePool: [
 			'https://camsstorage2026abcd.blob.core.windows.net/balooon/anniversary%20theme/1st%20Anniversary%20Decoration.webp',
 			'https://camsstorage2026abcd.blob.core.windows.net/balooon/anniversary%20theme/1st%20Anniversary%20Stage%20Decor.webp',
@@ -606,7 +606,7 @@ const categoryDefinitions = [
 		slug: 'romantic-room-decoration',
 		title: 'Romantic Room Decoration',
 		subtitle: 'Romantic themes with soft lighting and premium styling for couples.',
-		heroImage: '/Categories/Room%20Decor%20New.webp',
+		heroImage: 'https://camsstorage2026abcd.blob.core.windows.net/balooon/Categories/Room%20Decor%20New.webp',
 		imagePool: [
 			'https://camsstorage2026abcd.blob.core.windows.net/balooon/romantic%20room%20theme/Anniversary%20Balloon%20Room%20Decoration.webp',
 			'https://camsstorage2026abcd.blob.core.windows.net/balooon/romantic%20room%20theme/Anniversary%20Room%20Canopy.webp',
@@ -672,7 +672,7 @@ const categoryDefinitions = [
 		slug: 'welcome-baby-decoration',
 		title: 'Welcome Baby Decoration',
 		subtitle: 'Warm and adorable welcome setups crafted for your newborn celebration.',
-		heroImage: '/Categories/Baby%20Welcome.webp',
+		heroImage: 'https://camsstorage2026abcd.blob.core.windows.net/balooon/Categories/Baby%20Welcome.webp',
 		imagePool: [
 			'https://camsstorage2026abcd.blob.core.windows.net/balooon/Welcome%20Baby%20Decoration/Baby%20Boy%20Decoration.webp',
 			'https://camsstorage2026abcd.blob.core.windows.net/balooon/Welcome%20Baby%20Decoration/Baby%20Boy%20Home%20Setup.webp',
@@ -794,7 +794,7 @@ const categoryDefinitions = [
 		slug: 'baby-shower-decoration',
 		title: 'Baby Shower Decoration',
 		subtitle: 'Pastel and festive baby shower setups with beautiful photo moments.',
-		heroImage: '/Categories/Baby%20Shower.webp',
+		heroImage: 'https://camsstorage2026abcd.blob.core.windows.net/balooon/Categories/Baby%20Shower.webp',
 		imagePool: [
 			'https://camsstorage2026abcd.blob.core.windows.net/balooon/Baby%20Shower%20Decoration/Baby%20In%20Bloom%20Theme%20Decoration.webp',
 			'https://camsstorage2026abcd.blob.core.windows.net/balooon/Baby%20Shower%20Decoration/Baby%20Shower%20Backdrop%20Decoration%20With%20Balloons.webp',
@@ -888,7 +888,7 @@ const categoryDefinitions = [
 		slug: 'first-night-decoration',
 		title: 'First Night Decoration',
 		subtitle: 'Graceful and romantic first night room decor designed with care.',
-		heroImage: '/Categories/Room%20Decor%20New.webp',
+		heroImage: 'https://camsstorage2026abcd.blob.core.windows.net/balooon/Categories/Room%20Decor%20New.webp',
 		imagePool: [
 			'https://camsstorage2026abcd.blob.core.windows.net/balooon/First%20Night%20Room%20Decoration/1st%20Night%20Bed%20Decoration.webp',
 			'https://camsstorage2026abcd.blob.core.windows.net/balooon/First%20Night%20Room%20Decoration/1st%20Night%20Room%20Decoration.webp',
@@ -928,7 +928,7 @@ const categoryDefinitions = [
 		slug: 'proposal-decoration',
 		title: 'Proposal Decoration',
 		subtitle: 'Dreamy proposal setups that turn your yes-moment into a memory.',
-		heroImage: '/Categories/Proposal%20Decor.jpeg',
+		heroImage: 'https://camsstorage2026abcd.blob.core.windows.net/balooon/Categories/Proposal%20Decor.jpeg',
 		imagePool: [
 			'https://camsstorage2026abcd.blob.core.windows.net/balooon/Proposal%20Decoration/Balloon%20Proposal%20Room%20Decoration.webp',
 			'https://camsstorage2026abcd.blob.core.windows.net/balooon/Proposal%20Decoration/Dreamy%20Proposal%20Decoration.webp',
@@ -981,7 +981,7 @@ const categoryDefinitions = [
 		slug: 'wedding-decoration',
 		title: 'Wedding Decoration',
 		subtitle: 'From haldi to reception, complete wedding decor collections in Jaipur.',
-		heroImage: '/Categories/Ceremony%20Decor.webp',
+		heroImage: 'https://camsstorage2026abcd.blob.core.windows.net/balooon/Categories/Ceremony%20Decor.webp',
 		imagePool: [
 			'https://camsstorage2026abcd.blob.core.windows.net/balooon/Haldi%20Decoration/BEST%20SELLER%20Haldi%20And%20Mehndi%20Setup%20At%20Home.webp',
 			'https://camsstorage2026abcd.blob.core.windows.net/balooon/Haldi%20Decoration/BEST%20SELLER%20Pop%20of%20Haldi%20Decoration.webp',
@@ -1013,7 +1013,7 @@ const categoryDefinitions = [
 		slug: 'bachelorette-decoration',
 		title: 'Bachelorette Decoration',
 		subtitle: 'Trendy and vibrant bachelorette themes for unforgettable parties.',
-		heroImage: '/Categories/Bride%20to%20be.webp',
+		heroImage: 'https://camsstorage2026abcd.blob.core.windows.net/balooon/Categories/Bride%20to%20be.webp',
 		imagePool: [
 			'https://camsstorage2026abcd.blob.core.windows.net/balooon/Bachelorette%20Party%20Decoration/Bachelorette%20Home%20Decoration.webp',
 			'https://camsstorage2026abcd.blob.core.windows.net/balooon/Bachelorette%20Party%20Decoration/Bachelorette%20Party%20Arch.webp',
@@ -1061,21 +1061,21 @@ const categoryDefinitions = [
 		slug: 'corporate-office-decoration',
 		title: 'Corporate & Office Decoration',
 		subtitle: 'Professional office and corporate event decor with fast setup support.',
-		heroImage: '/Categories/Corporate%20event.webp',
-		imagePool: ['/Categories/Corporate%20event.webp', '/Categories/Festival%20Decor.webp', '/Categories/Ceremony%20Decor.webp'],
+		heroImage: 'https://camsstorage2026abcd.blob.core.windows.net/balooon/Categories/Corporate%20event.webp',
+		imagePool: ['https://camsstorage2026abcd.blob.core.windows.net/balooon/Categories/Corporate%20event.webp', 'https://camsstorage2026abcd.blob.core.windows.net/balooon/Categories/Festival%20Decor.webp', 'https://camsstorage2026abcd.blob.core.windows.net/balooon/Categories/Ceremony%20Decor.webp'],
 	},
 	{
 		slug: 'shop-opening-decoration',
 		title: 'Shop Opening Decoration',
 		subtitle: 'Attractive opening-day decor to create a strong first impression.',
-		heroImage: '/Categories/Festival%20Decor.webp',
-		imagePool: ['/Categories/Festival%20Decor.webp', '/Categories/Corporate%20event.webp', '/Categories/Birthday.webp'],
+		heroImage: 'https://camsstorage2026abcd.blob.core.windows.net/balooon/Categories/Festival%20Decor.webp',
+		imagePool: ['https://camsstorage2026abcd.blob.core.windows.net/balooon/Categories/Festival%20Decor.webp', 'https://camsstorage2026abcd.blob.core.windows.net/balooon/Categories/Corporate%20event.webp', 'https://camsstorage2026abcd.blob.core.windows.net/balooon/Categories/Birthday.webp'],
 	},
 	{
 		slug: 'festival-decoration',
 		title: 'Festival Decoration',
 		subtitle: 'Festive and cultural decoration themes tailored for every occasion.',
-		heroImage: '/Categories/Festival%20Decor.webp',
+		heroImage: 'https://camsstorage2026abcd.blob.core.windows.net/balooon/Categories/Festival%20Decor.webp',
 		imagePool: [
 			'https://camsstorage2026abcd.blob.core.windows.net/balooon/festive%20decorations/1%20Month%20Baby%20Decoration.webp',
 			'https://camsstorage2026abcd.blob.core.windows.net/balooon/festive%20decorations/Annaprashan%20Ceremony%20Background.webp',
@@ -1203,7 +1203,7 @@ const categoryDefinitions = [
 		slug: 'car-decoration',
 		title: 'Car Decoration',
 		subtitle: 'Premium car styling options for weddings, surprises and celebrations.',
-		heroImage: '/Categories/Car%20Boot.webp',
+		heroImage: 'https://camsstorage2026abcd.blob.core.windows.net/balooon/Categories/Car%20Boot.webp',
 		imagePool: [
 			'https://camsstorage2026abcd.blob.core.windows.net/balooon/Car%20Decoration/Anniversary%20Car%20Decor.webp',
 			'https://camsstorage2026abcd.blob.core.windows.net/balooon/Car%20Decoration/Birthday%20Car%20Decor.webp',
@@ -1233,21 +1233,21 @@ const categoryDefinitions = [
 		slug: 'hotel-room-decoration',
 		title: 'Hotel Room Decoration',
 		subtitle: 'Elegant hotel room decor for birthdays, anniversaries and surprises.',
-		heroImage: '/Categories/Room%20Decor%20New.webp',
-		imagePool: ['/Categories/Room%20Decor%20New.webp', '/Categories/Canopy%20Decor.webp', '/Categories/Proposal%20Decor.jpeg'],
+		heroImage: 'https://camsstorage2026abcd.blob.core.windows.net/balooon/Categories/Room%20Decor%20New.webp',
+		imagePool: ['https://camsstorage2026abcd.blob.core.windows.net/balooon/Categories/Room%20Decor%20New.webp', 'https://camsstorage2026abcd.blob.core.windows.net/balooon/Categories/Canopy%20Decor.webp', 'https://camsstorage2026abcd.blob.core.windows.net/balooon/Categories/Proposal%20Decor.jpeg'],
 	},
 	{
 		slug: 'surprise-decoration',
 		title: 'Surprise Decoration',
 		subtitle: 'Creative surprise setups planned for wow moments and reactions.',
-		heroImage: '/Categories/Proposal%20Decor.jpeg',
-		imagePool: ['/Categories/Proposal%20Decor.jpeg', '/Categories/Room%20Decor%20New.webp', '/Categories/Birthday.webp'],
+		heroImage: 'https://camsstorage2026abcd.blob.core.windows.net/balooon/Categories/Proposal%20Decor.jpeg',
+		imagePool: ['https://camsstorage2026abcd.blob.core.windows.net/balooon/Categories/Proposal%20Decor.jpeg', 'https://camsstorage2026abcd.blob.core.windows.net/balooon/Categories/Room%20Decor%20New.webp', 'https://camsstorage2026abcd.blob.core.windows.net/balooon/Categories/Birthday.webp'],
 	},
 	{
 		slug: 'balloon-hampers',
 		title: 'Balloon Hampers',
 		subtitle: 'Gift-ready balloon hamper ideas for birthdays and special celebrations.',
-		heroImage: '/Categories/Birthday.webp',
+		heroImage: 'https://camsstorage2026abcd.blob.core.windows.net/balooon/Categories/Birthday.webp',
 		imagePool: [
 			'https://camsstorage2026abcd.blob.core.windows.net/balooon/Balloon%20hampers/21st%20Birthday%20Balloon%20Bouquet.webp',
 			'https://camsstorage2026abcd.blob.core.windows.net/balooon/Balloon%20hampers/29th%20Balloon%20Bouquet.webp',
@@ -1325,7 +1325,25 @@ const categoryAliases: Record<string, string> = {
 
 export const resolveCategorySlug = (label: string): string | undefined => {
 	const normalizedLabel = label.trim().toLowerCase();
-	return slugByTitle.get(normalizedLabel) ?? categoryAliases[normalizedLabel];
+	if (slugByTitle.has(normalizedLabel)) {
+		return slugByTitle.get(normalizedLabel);
+	}
+	if (categoryAliases[normalizedLabel]) {
+		return categoryAliases[normalizedLabel];
+	}
+	const partialTitleMatch = categoryCatalog.find(
+		(cat) => cat.title.toLowerCase().includes(normalizedLabel) || normalizedLabel.includes(cat.title.toLowerCase())
+	);
+	if (partialTitleMatch) {
+		return partialTitleMatch.slug;
+	}
+	const aliasKey = Object.keys(categoryAliases).find(
+		(key) => key.includes(normalizedLabel) || normalizedLabel.includes(key)
+	);
+	if (aliasKey) {
+		return categoryAliases[aliasKey];
+	}
+	return undefined;
 };
 
 export const categoryHref = (label: string): string => {

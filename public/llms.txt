@@ -1,0 +1,52 @@
+# Jaipur Balloon Decoration
+
+India's No.1 trusted balloon decoration and event styling service in Jaipur. Book premium decorations for birthdays, anniversaries, baby welcomes, kids themes, weddings, and more.
+
+## Base URL
+- https://balloondecorjaipur.com
+
+## Main Navigation
+- [Home Page](https://balloondecorjaipur.com/) - Book trusted decorators, view top categories, read reviews, and explore kids or wedding packages.
+- [Explore Page](https://balloondecorjaipur.com/explore) - Browse and search all our available event themes and categories.
+
+## Main Categories
+- [Birthday Decoration](https://balloondecorjaipur.com/category/birthday-decoration)
+- [Anniversary Decoration](https://balloondecorjaipur.com/category/anniversary-decoration)
+- [Kids Theme Decoration](https://balloondecorjaipur.com/category/kids-theme-decoration)
+- [Romantic Room Decoration](https://balloondecorjaipur.com/category/romantic-room-decoration)
+- [Welcome Baby Decoration](https://balloondecorjaipur.com/category/welcome-baby-decoration)
+- [Baby Shower Decoration](https://balloondecorjaipur.com/category/baby-shower-decoration)
+- [First Night Decoration](https://balloondecorjaipur.com/category/first-night-decoration)
+- [Proposal Decoration](https://balloondecorjaipur.com/category/proposal-decoration)
+- [Wedding Decoration](https://balloondecorjaipur.com/category/wedding-decoration)
+- [Bachelorette Decoration](https://balloondecorjaipur.com/category/bachelorette-decoration)
+- [Corporate Office Decoration](https://balloondecorjaipur.com/category/corporate-office-decoration)
+- [Festival Decoration](https://balloondecorjaipur.com/category/festival-decoration)
+- [Car Decoration](https://balloondecorjaipur.com/category/car-decoration)
+- [Balloon Hampers](https://balloondecorjaipur.com/category/balloon-hampers)
+
+## Sub-Categories
+- [Cocomelon Theme](https://balloondecorjaipur.com/sub-category/kids-cocomelon-theme)
+- [Baby Shark Theme](https://balloondecorjaipur.com/sub-category/kids-baby-shark-theme)
+- [Boss Baby Theme](https://balloondecorjaipur.com/sub-category/kids-boss-baby-theme)
+- [Jungle Theme](https://balloondecorjaipur.com/sub-category/kids-jungle-theme)
+- [Frozen Theme](https://balloondecorjaipur.com/sub-category/kids-frozen-theme)
+- [Mermaid Theme](https://balloondecorjaipur.com/sub-category/kids-mermaid-theme)
+- [Bridal Shower](https://balloondecorjaipur.com/sub-category/wedding-bridal-shower)
+- [Haldi Decor](https://balloondecorjaipur.com/sub-category/wedding-haldi-decor)
+- [Mehndi Decor](https://balloondecorjaipur.com/sub-category/wedding-mehndi-decor)
+- [Wedding Car](https://balloondecorjaipur.com/sub-category/wedding-wedding-car)
+- [Bride Welcome](https://balloondecorjaipur.com/sub-category/wedding-bride-welcome)
+- [First Night](https://balloondecorjaipur.com/sub-category/wedding-first-night)
+- [Anniversary Decor](https://balloondecorjaipur.com/sub-category/romantic-anniversary)
+- [Canopy Decor](https://balloondecorjaipur.com/sub-category/romantic-canopy)
+- [Room Decor](https://balloondecorjaipur.com/sub-category/romantic-room-decor)
+- [Proposal setups](https://balloondecorjaipur.com/sub-category/romantic-proposal)
+- [Car Boot Decor](https://balloondecorjaipur.com/sub-category/romantic-car-boot-decor)
+- [Candle Light Dinner](https://balloondecorjaipur.com/sub-category/romantic-candle-light-dinner)
+
+## Contact Information
+- **Phone:** +91 7450960060
+- **Email:** info@balloondecorjaipur.com
+- **WhatsApp:** https://wa.me/917450960060
+- **Instagram:** https://www.instagram.com/balloon_decor_jaipur75/

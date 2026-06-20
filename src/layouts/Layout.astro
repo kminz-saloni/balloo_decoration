@@ -5,9 +5,13 @@ import SpeedInsights from "@vercel/speed-insights/astro";
 
 interface Props {
 	title?: string;
+	description?: string;
 }
 
-const { title = "Jaipur Balloon Decoration" } = Astro.props;
+const { 
+	title = "Jaipur Balloon Decoration",
+	description = "India's No.1 decor service in Jaipur with trusted decorators for every celebration." 
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -18,10 +22,7 @@ const { title = "Jaipur Balloon Decoration" } = Astro.props;
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="https://camsstorage2026abcd.blob.core.windows.net/balooon/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
-		<meta
-			name="description"
-			content="India's No.1 decor service in Jaipur with trusted decorators for every celebration."
-		/>
+		<meta name="description" content={description} />
 		<title>{title}</title>
 	</head>
 	<body>

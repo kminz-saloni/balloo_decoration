@@ -1,0 +1,227 @@
+
+<h2 class="sr-only">QA Audit Report for balloondecorjaipur.com — 20 issues found across 5 categories</h2>
+<style>
+.audit-header{padding:1.25rem 0 1rem;border-bottom:0.5px solid var(--color-border-tertiary)}
+.audit-header h1{font-size:18px;font-weight:500;margin:0 0 4px;color:var(--color-text-primary)}
+.audit-header p{font-size:13px;color:var(--color-text-secondary);margin:0}
+.score-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:1rem 0}
+.sc{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:12px;text-align:center}
+.sc-num{font-size:22px;font-weight:500;margin:0 0 2px}
+.sc-lbl{font-size:12px;color:var(--color-text-secondary)}
+.sc.red .sc-num{color:var(--color-text-danger)}
+.sc.amber .sc-num{color:var(--color-text-warning)}
+.sc.green .sc-num{color:var(--color-text-success)}
+.sc.blue .sc-num{color:var(--color-text-info)}
+.section-label{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.05em;color:var(--color-text-secondary);margin:1.5rem 0 8px;padding-bottom:4px;border-bottom:0.5px solid var(--color-border-tertiary)}
+.issue{display:flex;gap:12px;padding:10px 0;border-bottom:0.5px solid var(--color-border-tertiary);align-items:flex-start}
+.issue:last-child{border-bottom:none}
+.badge{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:500;padding:3px 8px;border-radius:20px;white-space:nowrap;flex-shrink:0;margin-top:2px}
+.badge.critical{background:var(--color-background-danger);color:var(--color-text-danger)}
+.badge.high{background:var(--color-background-warning);color:var(--color-text-warning)}
+.badge.medium{background:var(--color-background-info);color:var(--color-text-info)}
+.badge.low{background:var(--color-background-secondary);color:var(--color-text-secondary)}
+.issue-body{flex:1}
+.issue-title{font-size:14px;font-weight:500;color:var(--color-text-primary);margin:0 0 3px}
+.issue-desc{font-size:13px;color:var(--color-text-secondary);line-height:1.5;margin:0}
+.issue-fix{font-size:12px;color:var(--color-text-info);margin:5px 0 0;padding:5px 8px;background:var(--color-background-info);border-radius:var(--border-radius-md);border-left:2px solid var(--color-text-info)}
+</style>
+
+<div class="audit-header">
+  <h1><i class="ti ti-report-analytics" aria-hidden="true"></i> QA Audit — balloondecorjaipur.com</h1>
+  <p>Full site scan · 20 issues found across 5 categories</p>
+</div>
+
+<div class="score-row">
+  <div class="sc red"><div class="sc-num">6</div><div class="sc-lbl">Critical</div></div>
+  <div class="sc amber"><div class="sc-num">5</div><div class="sc-lbl">High</div></div>
+  <div class="sc blue"><div class="sc-num">5</div><div class="sc-lbl">Medium</div></div>
+  <div class="sc green"><div class="sc-num">4</div><div class="sc-lbl">Low / Improvement</div></div>
+</div>
+
+<div class="section-label"><i class="ti ti-alert-triangle" aria-hidden="true"></i> Critical — Fix immediately (breaks user experience or trust)</div>
+
+<div class="issue">
+  <span class="badge critical"><i class="ti ti-link-off"></i> Link</span>
+  <div class="issue-body">
+    <p class="issue-title">All footer links are broken — point to "#"</p>
+    <p class="issue-desc">Terms & Conditions, Return & Refund, About Us, Disclaimer, Contact Us, Privacy Policy, Sitemap — every single one goes to "#". Clicking them does nothing. Legal pages missing is also a compliance risk.</p>
+    <p class="issue-fix">→ Create actual pages or anchor sections, then wire up each link.</p>
+  </div>
+</div>
+
+<div class="issue">
+  <span class="badge critical"><i class="ti ti-phone-off"></i> CTA</span>
+  <div class="issue-body">
+    <p class="issue-title">Mobile bottom nav "Call" and "WhatsApp" buttons are dead</p>
+    <p class="issue-desc">The sticky mobile bar has Call and WhatsApp icons but both link to "#". These are your highest-intent CTAs — users tapping them get nothing.</p>
+    <p class="issue-fix">→ Call: href="tel:+917450960060" · WhatsApp: href="https://wa.me/917450960060"</p>
+  </div>
+</div>
+
+<div class="issue">
+  <span class="badge critical"><i class="ti ti-social"></i> Link</span>
+  <div class="issue-body">
+    <p class="issue-title">4 of 5 social media footer icons link to "#"</p>
+    <p class="issue-desc">Only Instagram has a real link. Facebook, Twitter/X, YouTube, and one other icon all go to "#" — looks unfinished and unprofessional.</p>
+    <p class="issue-fix">→ Add real profile URLs or remove the dead icons entirely.</p>
+  </div>
+</div>
+
+<div class="issue">
+  <span class="badge critical"><i class="ti ti-star-off"></i> Trust</span>
+  <div class="issue-body">
+    <p class="issue-title">"Loved by 10L+ families" vs "Based on 10+ reviews" — major credibility mismatch</p>
+    <p class="issue-desc">The reviews section simultaneously claims 10 lakh (1,000,000) customers AND only 10+ verified reviews. No real business with a million customers has only 10 reviews. Google and users will notice this immediately.</p>
+    <p class="issue-fix">→ Fix the numbers to be consistent. Either "500+ customers, 10+ reviews" or collect real reviews first.</p>
+  </div>
+</div>
+
+<div class="issue">
+  <span class="badge critical"><i class="ti ti-activity"></i> Trust</span>
+  <div class="issue-body">
+    <p class="issue-title">Ratings cycle in an obvious repeating pattern — looks fake</p>
+    <p class="issue-desc">Every product card cycles through exactly 4.9 → 4.8 → 4.7 → 4.9 → 4.8 → 4.7. On the birthday category page, review counts repeat the same sequence: 128, 94, 112, 78, 101, 137, 83, 96 — over and over. Real ratings don't look like this.</p>
+    <p class="issue-fix">→ Use real ratings, or at minimum randomize the values so they don't follow a visible loop.</p>
+  </div>
+</div>
+
+<div class="issue">
+  <span class="badge critical"><i class="ti ti-cloud"></i> Infra</span>
+  <div class="issue-body">
+    <p class="issue-title">Logo served from Azure Blob Storage — external dependency risk</p>
+    <p class="issue-desc">Logo loads from camsstorage2026abcd.blob.core.windows.net. If that storage account is deleted, renamed, or has access changed, your logo disappears site-wide with no warning.</p>
+    <p class="issue-fix">→ Upload the logo to your own domain and serve it from there.</p>
+  </div>
+</div>
+
+<div class="section-label"><i class="ti ti-alert-circle" aria-hidden="true"></i> High — Affects conversions or SEO significantly</div>
+
+<div class="issue">
+  <span class="badge high"><i class="ti ti-typography"></i> Content</span>
+  <div class="issue-body">
+    <p class="issue-title">Section heading uses "Moments" twice — "Turning Moments into Everlasting Moments"</p>
+    <p class="issue-desc">The gallery section heading is a typo — it likely should be "Turning Moments into Everlasting Memories".</p>
+    <p class="issue-fix">→ Change second "Moments" to "Memories".</p>
+  </div>
+</div>
+
+<div class="issue">
+  <span class="badge high"><i class="ti ti-search"></i> SEO</span>
+  <div class="issue-body">
+    <p class="issue-title">Identical meta description on every page</p>
+    <p class="issue-desc">Homepage and every category page share the exact same meta description: "India's No.1 decor service in Jaipur…". Google de-ranks pages with duplicate meta tags. Each page needs a unique description.</p>
+    <p class="issue-fix">→ Write unique meta descriptions per page: e.g., "Book birthday balloon decoration in Jaipur starting ₹999. Same-day slots available."</p>
+  </div>
+</div>
+
+<div class="issue">
+  <span class="badge high"><i class="ti ti-currency-rupee"></i> UX</span>
+  <div class="issue-body">
+    <p class="issue-title">No pricing shown on product cards — only hidden in FAQ</p>
+    <p class="issue-desc">Users browsing the homepage and category pages see "BOOK NOW" with no price. Pricing is mentioned in the FAQ (starts ₹999) but most users never scroll there. Showing starting price increases conversions.</p>
+    <p class="issue-fix">→ Add "Starting ₹999" badge on each card. It removes hesitation before the WhatsApp tap.</p>
+  </div>
+</div>
+
+<div class="issue">
+  <span class="badge high"><i class="ti ti-writing"></i> Content</span>
+  <div class="issue-body">
+    <p class="issue-title">Review says "balloon decoration website" — awkward phrasing</p>
+    <p class="issue-desc">First customer review: "I highly recommend this talented balloon decoration website for any event." Real customers don't recommend a "website" — they recommend a "service" or "team".</p>
+    <p class="issue-fix">→ Change "website" to "service" or "team" to sound authentic.</p>
+  </div>
+</div>
+
+<div class="issue">
+  <span class="badge high"><i class="ti ti-click"></i> UX</span>
+  <div class="issue-body">
+    <p class="issue-title">"Car Decoration" section cards have no Book Now button</p>
+    <p class="issue-desc">The "Car Decoration for Wedding" section shows 4 product cards but none have a "BOOK NOW" or "WhatsApp" CTA. Users interested in car decor have no direct path to book.</p>
+    <p class="issue-fix">→ Add WhatsApp BOOK NOW links to each car decoration card, consistent with the rest of the site.</p>
+  </div>
+</div>
+
+<div class="section-label"><i class="ti ti-info-circle" aria-hidden="true"></i> Medium — Image, content, and UX inconsistencies</div>
+
+<div class="issue">
+  <span class="badge medium"><i class="ti ti-photo"></i> Images</span>
+  <div class="issue-body">
+    <p class="issue-title">Kids section images don't match their titles</p>
+    <p class="issue-desc">The 5 "Kids Special" cards on the homepage (Icecream Setup, Butterfly Theme, Cartoon Party, Animal Safari, Candyland) all serve images from a "1st Birthday" folder. The images shown likely don't match the theme names.</p>
+    <p class="issue-fix">→ Use theme-specific images for each card, or verify the correct images are mapped.</p>
+  </div>
+</div>
+
+<div class="issue">
+  <span class="badge medium"><i class="ti ti-photo"></i> Images</span>
+  <div class="issue-body">
+    <p class="issue-title">Gallery section alt texts don't match the images served</p>
+    <p class="issue-desc">The gallery shows alt text like "Blue birthday ring setup", "Anniversary room decor", etc. — but the actual image URLs are all from the "Baby Shower Decoration" folder. Alt text and images are mismatched.</p>
+    <p class="issue-fix">→ Correct the alt text on each gallery image to match what the image actually shows.</p>
+  </div>
+</div>
+
+<div class="issue">
+  <span class="badge medium"><i class="ti ti-adjustments"></i> UX</span>
+  <div class="issue-body">
+    <p class="issue-title">Filter tabs on category page appear decorative (non-functional)</p>
+    <p class="issue-desc">The category page has many filter pills (Premium, Indoor, Quick Setup, Theme Based, etc.) that look interactive but likely don't filter results. Users who tap them expecting to filter will be confused.</p>
+    <p class="issue-fix">→ Either wire up actual filtering, or remove the tabs so the page looks intentional.</p>
+  </div>
+</div>
+
+<div class="issue">
+  <span class="badge medium"><i class="ti ti-letter-case"></i> Content</span>
+  <div class="issue-body">
+    <p class="issue-title">Mixed British/American spelling — "Customised" and "Customized" both appear</p>
+    <p class="issue-desc">Both spellings appear as separate product listings ("Customised Birthday Decoration" and "Customized Birthday Decoration"), making them look like duplicate entries rather than intentional SKUs.</p>
+    <p class="issue-fix">→ Pick one spelling and standardize across all listings.</p>
+  </div>
+</div>
+
+<div class="issue">
+  <span class="badge medium"><i class="ti ti-letter-case"></i> Content</span>
+  <div class="issue-body">
+    <p class="issue-title">"Sequence" used where "Sequins" is likely meant</p>
+    <p class="issue-desc">Multiple listings say "Sequence Decoration" (e.g., "Rose Gold Birthday Sequence", "Blue Sequence Decoration") — these are almost certainly sequin/shimmer decorations, not number sequences.</p>
+    <p class="issue-fix">→ Search-replace "Sequence" with "Sequins" in decoration product names where relevant.</p>
+  </div>
+</div>
+
+<div class="section-label"><i class="ti ti-bulb" aria-hidden="true"></i> Improvement — Opportunities to grow trust and conversions</div>
+
+<div class="issue">
+  <span class="badge low"><i class="ti ti-click"></i> UX</span>
+  <div class="issue-body">
+    <p class="issue-title">CTA inconsistency — "ORDER NOW" vs "BOOK NOW"</p>
+    <p class="issue-desc">The Corporate Event section uses "ORDER NOW" while every other section uses "BOOK NOW". This small inconsistency breaks the brand voice.</p>
+    <p class="issue-fix">→ Change "ORDER NOW" to "BOOK NOW" for consistency.</p>
+  </div>
+</div>
+
+<div class="issue">
+  <span class="badge low"><i class="ti ti-map-pin"></i> SEO</span>
+  <div class="issue-body">
+    <p class="issue-title">Footer location links go nowhere ("#")</p>
+    <p class="issue-desc">Jaipur, Vaishali Nagar, Mansarovar, Malviya Nagar location links in the footer all go to "#". Location-specific pages are a huge local SEO opportunity.</p>
+    <p class="issue-fix">→ Create area-specific landing pages (e.g., /balloon-decoration-vaishali-nagar-jaipur) and link them.</p>
+  </div>
+</div>
+
+<div class="issue">
+  <span class="badge low"><i class="ti ti-star"></i> Trust</span>
+  <div class="issue-body">
+    <p class="issue-title">"India's No.1 Decor" claim has no source or backing</p>
+    <p class="issue-desc">Claiming "#1 in India" without any reference (award, third-party ranking, etc.) reduces credibility. Visitors know it's unverified marketing.</p>
+    <p class="issue-fix">→ Replace with a more specific, believable claim like "Jaipur's most-booked balloon team" or add a trust badge from a real source.</p>
+  </div>
+</div>
+
+<div class="issue">
+  <span class="badge low"><i class="ti ti-brand-whatsapp"></i> Conversion</span>
+  <div class="issue-body">
+    <p class="issue-title">Footer Top Categories links go to "#"</p>
+    <p class="issue-desc">Birthday, Anniversary, Baby Shower, etc. in the footer all link to "#". These are internal SEO links that should point to your real category pages.</p>
+    <p class="issue-fix">→ Link each to its /category/... URL — e.g., Birthday → /category/birthday-decoration</p>
+  </div>
+</div>

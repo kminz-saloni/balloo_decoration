@@ -14,7 +14,7 @@ const uniqueTags = Array.from(new Set(category.cards.flatMap((card) => card.tags
 const filterTags = ['All', ...uniqueTags];
 ---
 
-<Layout title={`${category.title} | Jaipur Balloon Decoration`}>
+<Layout title={`${category.title} | Jaipur Balloon Decoration`} description={`Book ${category.title.toLowerCase()} in Jaipur starting ₹999. ${category.subtitle} Same-day slots available on WhatsApp.`}>
 	<main class="min-h-screen bg-[linear-gradient(180deg,#edf3ff_0%,#f5f8ff_36%,#f4f7fd_100%)] pb-28 lg:pb-10">
 		<div class="mx-auto w-full max-w-[1320px] px-4 pt-4 sm:px-6 lg:px-8">
 			<section>
@@ -90,9 +90,12 @@ const filterTags = ['All', ...uniqueTags];
 									<h2 class="mt-1 text-[0.95rem] font-semibold leading-tight text-[#1f2a44] sm:text-[1.02rem]">
 										{card.title}
 									</h2>
-									<div class="mt-2 flex items-center gap-1.5 text-[#f2bf2f]">
-										<span class="text-xs">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
-										<span class="text-xs font-medium text-[#5f6b86]">{card.rating} ({card.reviews})</span>
+									<div class="mt-2 flex items-center justify-between">
+										<div class="flex items-center gap-1.5 text-[#f2bf2f]">
+											<span class="text-xs">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
+											<span class="text-xs font-medium text-[#5f6b86]">{card.rating} ({card.reviews})</span>
+										</div>
+										<span class="text-[10px] font-bold text-[#6b3fe7]">From ₹999</span>
 									</div>
 									<a
 										href={`https://wa.me/918690924378?text=${encodeURIComponent(`Hi, I want to book ${card.title} in Jaipur`)}`}

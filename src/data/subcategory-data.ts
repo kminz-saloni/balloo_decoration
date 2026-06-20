@@ -45,8 +45,8 @@ const cardTagTemplates = [
 	['Luxury', 'Trending'],
 ];
 
-const cardRatingTemplates = ['4.9', '4.8', '4.9', '4.7', '4.8', '4.9'];
-const cardReviewTemplates = [118, 93, 104, 79, 88, 126];
+const cardRatingTemplates = ['4.9', '4.8', '4.9', '5.0', '4.8', '4.7', '4.9', '4.8', '5.0', '4.9', '4.8', '4.9'];
+const cardReviewTemplates = [124, 89, 203, 145, 92, 178, 112, 198, 134, 167, 105, 142, 189, 95];
 
 const createCards = (slug: string, title: string, imagePool: string[]): SubCategoryCard[] => {
 	const baseTitle = title.trim();
@@ -286,7 +286,7 @@ const seeds: SubCategorySeed[] = [
 			'https://camsstorage2026abcd.blob.core.windows.net/balooon/Bachelorette Party Decoration/Bachelorette Room Setup.webp',
 			'https://camsstorage2026abcd.blob.core.windows.net/balooon/Bachelorette Party Decoration/Bachelorette Sitting Decoration.webp',
 			'https://camsstorage2026abcd.blob.core.windows.net/balooon/Bachelorette Party Decoration/Bachelorette Surprise Setup.webp',
-			'https://camsstorage2026abcd.blob.core.windows.net/balooon/Bachelorette Party Decoration/Bachelorette Theme Sequence.webp',
+			'https://camsstorage2026abcd.blob.core.windows.net/balooon/Bachelorette Party Decoration/Bachelorette Theme Sequins.webp',
 			'https://camsstorage2026abcd.blob.core.windows.net/balooon/Bachelorette Party Decoration/Bridal Party Decoration.webp',
 			'https://camsstorage2026abcd.blob.core.windows.net/balooon/Bachelorette Party Decoration/Bridal Ring Decoration.webp',
 			'https://camsstorage2026abcd.blob.core.windows.net/balooon/Bachelorette Party Decoration/Bridal Shower Decoration.webp',
@@ -487,7 +487,7 @@ const seeds: SubCategorySeed[] = [
 			'https://camsstorage2026abcd.blob.core.windows.net/balooon/anniversary theme/Better Together Backdrop.webp',
 			'https://camsstorage2026abcd.blob.core.windows.net/balooon/anniversary theme/Better Together Decor.webp',
 			'https://camsstorage2026abcd.blob.core.windows.net/balooon/anniversary theme/Better Together Decoration.webp',
-			'https://camsstorage2026abcd.blob.core.windows.net/balooon/anniversary theme/Better Together Sequence Decor.webp',
+			'https://camsstorage2026abcd.blob.core.windows.net/balooon/anniversary theme/Better Together Sequins Decor.webp',
 			'https://camsstorage2026abcd.blob.core.windows.net/balooon/anniversary theme/Better Together Terrace Decoration.webp',
 			'https://camsstorage2026abcd.blob.core.windows.net/balooon/anniversary theme/Budget Anniversary Decoration.webp',
 			'https://camsstorage2026abcd.blob.core.windows.net/balooon/anniversary theme/Dazzling Wall Setup.webp',
@@ -514,7 +514,7 @@ const seeds: SubCategorySeed[] = [
 			'https://camsstorage2026abcd.blob.core.windows.net/balooon/anniversary theme/Room Decoration With Flower.webp',
 			'https://camsstorage2026abcd.blob.core.windows.net/balooon/anniversary theme/Rose Gold Decoration.webp',
 			'https://camsstorage2026abcd.blob.core.windows.net/balooon/anniversary theme/Roseate Anniversary.webp',
-			'https://camsstorage2026abcd.blob.core.windows.net/balooon/anniversary theme/Sequence Anniversary Theme.webp',
+			'https://camsstorage2026abcd.blob.core.windows.net/balooon/anniversary theme/Sequins Anniversary Theme.webp',
 			'https://camsstorage2026abcd.blob.core.windows.net/balooon/anniversary theme/Silver Jubilee Decoration.webp',
 			'https://camsstorage2026abcd.blob.core.windows.net/balooon/anniversary theme/Simple Anniversary Decor.webp',
 			'https://camsstorage2026abcd.blob.core.windows.net/balooon/anniversary theme/Simple Anniversary Room Decor.webp',
@@ -663,7 +663,7 @@ const seeds: SubCategorySeed[] = [
 			'https://camsstorage2026abcd.blob.core.windows.net/balooon/Proposal Decoration/Romantic Room Proposal.webp',
 			'https://camsstorage2026abcd.blob.core.windows.net/balooon/Proposal Decoration/Room Decoration For Proposal.webp',
 			'https://camsstorage2026abcd.blob.core.windows.net/balooon/Proposal Decoration/Room Proposal Decoration.webp',
-			'https://camsstorage2026abcd.blob.core.windows.net/balooon/Proposal Decoration/Sequence Proposal Decoration.webp',
+			'https://camsstorage2026abcd.blob.core.windows.net/balooon/Proposal Decoration/Sequins Proposal Decoration.webp',
 			'https://camsstorage2026abcd.blob.core.windows.net/balooon/Proposal Decoration/Simple Proposal Room Decoration.webp',
 			'https://camsstorage2026abcd.blob.core.windows.net/balooon/Proposal Decoration/Surprise Proposal Decoration.webp',
 			'https://camsstorage2026abcd.blob.core.windows.net/balooon/Proposal Decoration/Surprise Proposal Room Setup.webp',

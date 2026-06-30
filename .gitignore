@@ -26,3 +26,4 @@ pnpm-debug.log*
 # Ignore all directories in public except Categories
 public/*/
 !public/Categories/
+!public/Review_people/

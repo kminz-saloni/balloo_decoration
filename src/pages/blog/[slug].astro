@@ -1,0 +1,90 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { blogPosts, type BlogPost } from '../../data/blog-data';
+
+export function getStaticPaths() {
+	return blogPosts.map((post) => ({
+		params: { slug: post.slug },
+		props: { post },
+	}));
+}
+
+const { post } = Astro.props as { post: BlogPost };
+
+// Format keywords for structured data
+const schemaKeywords = post.keywords.join(', ');
+
+// Prepare dynamic BlogPosting schema
+const schemaJson = {
+	"@context": "https://schema.org",
+	"@type": "BlogPosting",
+	"headline": post.title,
+	"description": post.description,
+	"image": post.image,
+	"datePublished": "2026-07-01",
+	"author": {
+		"@type": "Organization",
+		"name": "Jaipur Balloon Decoration",
+		"url": "https://balloondecorjaipur.com"
+	},
+	"publisher": {
+		"@type": "Organization",
+		"name": "Jaipur Balloon Decoration",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://camsstorage2026abcd.blob.core.windows.net/balooon/Gfg-logo.webp"
+		}
+	},
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": `https://balloondecorjaipur.com/blog/${post.slug}`
+	},
+	"keywords": schemaKeywords
+};
+---
+
+<Layout title={`${post.title} | Jaipur Balloon Decor Blog`} description={post.description}>
+	<script type="application/ld+json" set:html={JSON.stringify(schemaJson)} />
+	
+	<main class="min-h-screen bg-[linear-gradient(180deg,#edf3ff_0%,#f5f8ff_36%,#f4f7fd_100%)] pb-28 lg:pb-10">
+		<div class="mx-auto w-full max-w-[840px] px-4 pt-6 sm:px-6 lg:px-8">
+			
+			<a href="/blog" class="inline-flex items-center gap-2 text-sm font-semibold text-[#58637f] hover:text-[#433fbb] mb-4">
+				<svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2">
+					<path d="m15 18-6-6 6-6"></path>
+				</svg>
+				<span>Back to blog index</span>
+			</a>
+
+			<article class="overflow-hidden rounded-3xl border border-[#d9e3f2] bg-white shadow-[0_16px_38px_-26px_rgba(67,61,128,0.35)] p-5 sm:p-8">
+				<header class="mb-6">
+					<div class="flex items-center gap-3 mb-2">
+						<span class="text-xs font-semibold text-[#5b4fda] bg-[#efe8ff] px-2.5 py-1 rounded-full">{post.categoryTitle}</span>
+						<span class="text-xs text-[#8c96ac]">{post.publishDate}</span>
+					</div>
+					<h1 class="text-2xl font-extrabold leading-tight text-[#1f2a44] sm:text-3xl lg:text-4xl">
+						{post.title}
+					</h1>
+				</header>
+
+				<img src={post.image} alt={post.title} class="w-full h-64 sm:h-96 object-cover rounded-2xl border border-[#e3eaf7] mb-8" />
+
+				<div class="prose prose-blue max-w-none text-[#2d3752] leading-relaxed text-base sm:text-lg" set:html={post.content} />
+
+				<div class="mt-10 pt-6 border-t border-[#dee8fb] text-center">
+					<h3 class="text-lg font-bold text-[#1f2a44]">Ready to Book This Decoration?</h3>
+					<p class="text-sm text-[#5f6b86] mt-1">Book the best balloon decoration in Jaipur instantly via WhatsApp.</p>
+					<a
+						href={`https://wa.me/918690924378?text=${encodeURIComponent(`Hi, I read your blog and want to book ${post.categoryTitle} in Jaipur`)}`}
+						target="_blank"
+						rel="noreferrer"
+						class="mt-4 inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#4f46e5] to-[#7c3aed] px-8 py-3.5 text-base font-bold text-white shadow-[0_12px_24px_-14px_rgba(90,49,180,0.75)] transition hover:translate-y-[-1px] hover:shadow-[0_14px_24px_-14px_rgba(90,49,180,0.95)]"
+					>
+						BOOK VIA WHATSAPP
+					</a>
+				</div>
+			</article>
+
+		</div>
+	</main>
+</Layout>

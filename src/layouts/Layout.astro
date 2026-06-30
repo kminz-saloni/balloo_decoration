@@ -12,6 +12,73 @@ const {
 	title = "Jaipur Balloon Decoration",
 	description = "India's No.1 decor service in Jaipur with trusted decorators for every celebration." 
 } = Astro.props;
+
+// Absolute canonical path and OpenGraph metadata
+const siteDomain = "https://balloondecorjaipur.com";
+const canonicalUrl = `${siteDomain}${Astro.url.pathname === '/' ? '' : Astro.url.pathname}`;
+const ogImageUrl = `${siteDomain}/Hero-png.png`;
+
+// Local Business Schema JSON-LD
+const localBusinessSchema = {
+	"@context": "https://schema.org",
+	"@type": "ProfessionalService",
+	"name": "Jaipur Balloon Decoration",
+	"alternateName": ["Jaipur Balloon Decor", "Balloon Decoration Jaipur", "Best Balloon Decoration in Jaipur"],
+	"image": ogImageUrl,
+	"logo": "https://camsstorage2026abcd.blob.core.windows.net/balooon/Gfg-logo.webp",
+	"url": siteDomain,
+	"telephone": "+918690924378",
+	"priceRange": "$$",
+	"address": {
+		"@type": "PostalAddress",
+		"streetAddress": "Mansarovar, Vaishali Nagar, Malviya Nagar, C-Scheme",
+		"addressLocality": "Jaipur",
+		"addressRegion": "Rajasthan",
+		"postalCode": "302001",
+		"addressCountry": "IN"
+	},
+	"geo": {
+		"@type": "GeoCoordinates",
+		"latitude": "26.9124",
+		"longitude": "75.7873"
+	},
+	"openingHoursSpecification": {
+		"@type": "OpeningHoursSpecification",
+		"dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+		"opens": "08:00",
+		"closes": "22:00"
+	},
+	"sameAs": [
+		"https://www.instagram.com/balloon_decor_jaipur75/"
+	],
+	"areaServed": [
+		{
+			"@type": "AdministrativeArea",
+			"name": "Jaipur"
+		},
+		{
+			"@type": "AdministrativeArea",
+			"name": "Mansarovar, Jaipur"
+		},
+		{
+			"@type": "AdministrativeArea",
+			"name": "Vaishali Nagar, Jaipur"
+		},
+		{
+			"@type": "AdministrativeArea",
+			"name": "Malviya Nagar, Jaipur"
+		},
+		{
+			"@type": "AdministrativeArea",
+			"name": "Jagatpura, Jaipur"
+		},
+		{
+			"@type": "AdministrativeArea",
+			"name": "C-Scheme, Jaipur"
+		}
+	],
+	"description": "Premium balloon decoration services in Jaipur for birthday, anniversary, kids theme parties, welcome baby events, proposal, and room decoration."
+};
 ---
 
 <!doctype html>
@@ -19,11 +86,34 @@ const {
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="https://camsstorage2026abcd.blob.core.windows.net/balooon/favicon.ico" />
+		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
+		
+		<!-- SEO Crawler & Bot Controls -->
+		<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+		<meta name="googlebot" content="index, follow" />
+		<meta name="bingbot" content="index, follow" />
 		<meta name="description" content={description} />
+		<link rel="canonical" href={canonicalUrl} />
+		
+		<!-- OpenGraph / Facebook Meta Tags -->
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={ogImageUrl} />
+		<meta property="og:url" content={canonicalUrl} />
+		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content="Jaipur Balloon Decoration" />
+		
+		<!-- Twitter Cards Meta Tags -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={ogImageUrl} />
+
 		<title>{title}</title>
+
+		<!-- Structured Data JSON-LD for Local Business -->
+		<script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
 	</head>
 	<body>
 		<slot />

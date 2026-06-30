@@ -1,0 +1,27 @@
+# Google and Bing search crawlers
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /private/
+
+# AI Search Crawlers (Generative Engine Optimization - GEO)
+User-agent: GPTBot
+Allow: /
+Disallow: /admin/
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+Sitemap: https://balloondecorjaipur.com/sitemap.xml

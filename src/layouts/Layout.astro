@@ -15,7 +15,8 @@ const {
 
 // Absolute canonical path and OpenGraph metadata
 const siteDomain = "https://balloondecorjaipur.com";
-const canonicalUrl = `${siteDomain}${Astro.url.pathname === '/' ? '' : Astro.url.pathname}`;
+const cleanPath = Astro.url.pathname.replace(/\/$/, "");
+const canonicalUrl = `${siteDomain}${cleanPath}/`;
 const ogImageUrl = `${siteDomain}/Hero-png.png`;
 
 // Local Business Schema JSON-LD
@@ -31,16 +32,16 @@ const localBusinessSchema = {
 	"priceRange": "$$",
 	"address": {
 		"@type": "PostalAddress",
-		"streetAddress": "Mansarovar, Vaishali Nagar, Malviya Nagar, C-Scheme",
+		"streetAddress": "Plot No. 14, Sahil Sagar Appartment, (Maharani Farm, Gayatri Nagar B, Durgapura)",
 		"addressLocality": "Jaipur",
 		"addressRegion": "Rajasthan",
-		"postalCode": "302001",
+		"postalCode": "302018",
 		"addressCountry": "IN"
 	},
 	"geo": {
 		"@type": "GeoCoordinates",
-		"latitude": "26.9124",
-		"longitude": "75.7873"
+		"latitude": "26.8501",
+		"longitude": "75.7783"
 	},
 	"openingHoursSpecification": {
 		"@type": "OpeningHoursSpecification",

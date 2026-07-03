@@ -35,6 +35,8 @@ const filterTags = ['All', ...uniqueTags];
 						src={category.heroImage}
 						alt={`${category.title} hero`}
 						class="h-52 w-full rounded-[24px] border border-[#e3eaf7] object-cover sm:h-64 lg:h-72"
+						loading="eager"
+						fetchpriority="high"
 					/>
 				</div>
 			</section>
